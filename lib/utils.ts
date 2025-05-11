@@ -12,8 +12,15 @@ export function getBaseUrl() {
     return window.location.origin
   }
 
-  // En el servidor, usa el dominio principal
-  return process.env.NEXT_PUBLIC_SITE_URL || "https://www.foxmotorepuestos.com"
+  // En el servidor, usa el dominio principal con protocolo https://
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "www.foxmotorepuestos.com"
+
+  // Asegurarse de que la URL tenga el protocolo https://
+  if (siteUrl.startsWith("http://") || siteUrl.startsWith("https://")) {
+    return siteUrl
+  }
+
+  return `https://${siteUrl}`
 }
 
 // Función para construir URLs absolutas

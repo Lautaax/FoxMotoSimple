@@ -5,11 +5,13 @@ import type { NextRequest } from "next/server"
 export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone()
   const hostname = request.headers.get("host") || ""
-  const isRootPath = url.pathname === "/"
 
   // Redirigir de dominio sin www a dominio con www (canonicalización)
   if (hostname === "foxmotorepuestos.com") {
+    // Asegurarse de mantener el protocolo original
+    const protocol = request.nextUrl.protocol || "https:"
     url.host = "www.foxmotorepuestos.com"
+    url.protocol = protocol
     return NextResponse.redirect(url)
   }
 
