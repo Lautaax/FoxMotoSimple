@@ -27,7 +27,7 @@ export default function Home() {
       alt: "Taller de Fox Motorepuestos",
     },
     {
-      src: "/carousel/motorcycle-parts.jpg",
+      src: "/carousel/motorcycle-parts.png",
       alt: "Repuestos de motos",
     },
     {
@@ -35,7 +35,7 @@ export default function Home() {
       alt: "Frente de la tienda Fox Motorepuestos",
     },
     {
-      src: "/carousel/mechanic.jpg",
+      src: "/carousel/mechanic.png",
       alt: "Mecánico trabajando en una moto",
     },
     {
@@ -394,8 +394,9 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-medium mb-1">Horario de Atención</h4>
-                      <p className="text-[#7A7A7A]">Lunes a Viernes: 9:00 - 18:00</p>
-                      <p className="text-[#7A7A7A]">Sábados: 9:00 - 13:00</p>
+                      <p className="text-[#7A7A7A]">Lunes a Viernes: 9:00 - 21:00</p>
+                      <p className="text-[#7A7A7A]">Sábados: 9:00 - 19:00</p>
+                      <p className="text-[#7A7A7A]">Domingos: 10:00 - 18:00</p>
                     </div>
                   </div>
                 </div>
@@ -422,64 +423,6 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-
-              <div className="bg-[#1C1C1C] p-8 rounded-lg border border-[#7A7A7A]/20">
-                <h3 className="text-xl font-bold mb-6">Envíanos un mensaje</h3>
-
-                <form className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium">
-                        Nombre
-                      </label>
-                      <input
-                        id="name"
-                        type="text"
-                        className="w-full px-3 py-2 bg-[#252525] border border-[#7A7A7A]/20 rounded-md focus:outline-none focus:ring-2 focus:ring-[#D32F2F]"
-                        placeholder="Tu nombre"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium">
-                        Email
-                      </label>
-                      <input
-                        id="email"
-                        type="email"
-                        className="w-full px-3 py-2 bg-[#252525] border border-[#7A7A7A]/20 rounded-md focus:outline-none focus:ring-2 focus:ring-[#D32F2F]"
-                        placeholder="Tu email"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="subject" className="text-sm font-medium">
-                      Asunto
-                    </label>
-                    <input
-                      id="subject"
-                      type="text"
-                      className="w-full px-3 py-2 bg-[#252525] border border-[#7A7A7A]/20 rounded-md focus:outline-none focus:ring-2 focus:ring-[#D32F2F]"
-                      placeholder="Asunto del mensaje"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium">
-                      Mensaje
-                    </label>
-                    <textarea
-                      id="message"
-                      rows={5}
-                      className="w-full px-3 py-2 bg-[#252525] border border-[#7A7A7A]/20 rounded-md focus:outline-none focus:ring-2 focus:ring-[#D32F2F]"
-                      placeholder="Tu mensaje"
-                    ></textarea>
-                  </div>
-
-                  <Button className="w-full bg-[#D32F2F] hover:bg-[#D32F2F]/80">Enviar Mensaje</Button>
-                </form>
-              </div>
-            </div>
 
             <div className="mt-12">
               <div className="bg-[#1C1C1C] p-2 rounded-lg border border-[#7A7A7A]/20 h-[400px] w-full">
