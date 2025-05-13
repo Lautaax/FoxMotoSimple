@@ -589,7 +589,7 @@ export default function Home() {
           </div>
 
           <div className="border-t border-[#7A7A7A]/20 mt-8 pt-8 text-center text-[#7A7A7A]">
-            <p>&copy; {new Date().getFullYear()} Fox Motorepuestos. Todos los derechos reservados.</p>
+            <p>&copy; {new Date().getFullYear()} Fox Motorepuestos. Todos los derechos reservados. Web Diseñada por @_lautaaj</p>
           </div>
         </div>
       </footer>
