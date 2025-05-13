@@ -111,7 +111,7 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button className="bg-[#D32F2F] hover:bg-[#D32F2F]/80 text-lg px-8 py-6">
-                  Ver Productos
+                  Tienda (Proximamente)
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
