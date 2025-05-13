@@ -18,6 +18,7 @@ import {
 import { MobileMenu } from "@/components/mobile-menu"
 import { ImageCarousel } from "@/components/image-carousel"
 import { WhatsAppButton } from "@/components/whatsapp-button"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export default function Home() {
   // Imágenes para el carrusel
