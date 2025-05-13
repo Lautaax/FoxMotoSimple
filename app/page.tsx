@@ -18,7 +18,6 @@ import {
 import { MobileMenu } from "@/components/mobile-menu"
 import { ImageCarousel } from "@/components/image-carousel"
 import { WhatsAppButton } from "@/components/whatsapp-button"
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
 
 export default function Home() {
