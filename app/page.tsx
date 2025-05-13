@@ -428,7 +428,7 @@ export default function Home() {
 
               <div className="bg-[#1C1C1C] p-4 rounded-lg border border-[#7A7A7A]/20 h-full min-h-[500px]">
                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3113.5!2d-62.2!3d-38.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDQyJzAwLjAiUyA2MsKwMTInMDAuMCJX!5e0!3m2!1ses!2sar!4v1620000000000!5m2!1ses!2sar"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3855.8570646094145!2d-62.30636570000001!3d-38.69764060000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95edbb0b219851e3%3A0xd76531ce46a29e96!2sManzana%20de%20las%20Luces%20475%2C%20B8003IRI%20Bah%C3%ADa%20Blanca%2C%20Provincia%20de%20Buenos%20Aires!5e1!3m2!1ses!2sar!4v1747179776052!5m2!1ses!2sar"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
