@@ -133,7 +133,8 @@ export default function Home() {
               </div>
               <div className="flex items-center justify-center md:justify-end gap-2">
                 <Clock className="h-5 w-5 text-[#D32F2F]" />
-                <span>Lun-Vie: 9:00-21:00 | Sáb: 9:00-19:00 | Dom 10:00-18:00</span>
+                <span>|Lun-Vie: 9:00-21:00 | Sáb: 9:00-19:00 |</span>
+                <span>|Dom 10:00-18:00|</span>
               </div>
             </div>
           </div>
