@@ -114,9 +114,6 @@ export default function Home() {
                   Ver Productos
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
-                <Button variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-6">
-                  Contactar
-                </Button>
               </div>
             </div>
           </div>
