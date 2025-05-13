@@ -133,7 +133,7 @@ export default function Home() {
               </div>
               <div className="flex items-center justify-center md:justify-end gap-2">
                 <Clock className="h-5 w-5 text-[#D32F2F]" />
-                <span>Lun-Vie: 9:00-18:00 | Sáb: 9:00-13:00</span>
+                <span>Lun-Vie: 9:00-21:00 | Sáb: 9:00-19:00 | Dom 10:00-18:00</span>
               </div>
             </div>
           </div>
@@ -279,7 +279,7 @@ export default function Home() {
                 <h2 className="text-3xl font-bold tracking-tighter md:text-4xl mb-6">Fox Motorepuestos</h2>
                 <p className="text-[#7A7A7A] mb-6 text-lg">
                   Somos una empresa dedicada a la venta de repuestos y accesorios para motos de todas las marcas y
-                  cilindradas. Con años de experiencia en el mercado, nos hemos consolidado como un referente en Bahía
+                  cilindradas. Con años de experiencia en el mercado, nos estamos consolidando como un referente en Bahía
                   Blanca y la zona.
                 </p>
                 <p className="text-[#7A7A7A] mb-8 text-lg">
