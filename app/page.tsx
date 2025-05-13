@@ -86,8 +86,6 @@ export default function Home() {
 
             {/* Menú hamburguesa para móviles */}
             <MobileMenu />
-
-            <Button className="bg-[#D32F2F] hover:bg-[#D32F2F]/80 hidden md:flex">Contactar</Button>
           </div>
         </div>
       </header>
@@ -222,9 +220,6 @@ export default function Home() {
                 <CardContent className="p-6">
                   <h3 className="text-xl font-bold mb-2">Cadenas y Transmisión</h3>
                   <p className="text-[#7A7A7A] mb-4">Cadenas, piñones, coronas y kits de transmisión</p>
-                  <Button variant="link" className="text-[#D32F2F] p-0 h-auto font-medium">
-                    Ver productos <ChevronRight className="ml-1 h-4 w-4" />
-                  </Button>
                 </CardContent>
               </Card>
 
@@ -240,9 +235,6 @@ export default function Home() {
                 <CardContent className="p-6">
                   <h3 className="text-xl font-bold mb-2">Neumáticos</h3>
                   <p className="text-[#7A7A7A] mb-4">Cubiertas para todo tipo de motos y terrenos</p>
-                  <Button variant="link" className="text-[#D32F2F] p-0 h-auto font-medium">
-                    Ver productos <ChevronRight className="ml-1 h-4 w-4" />
-                  </Button>
                 </CardContent>
               </Card>
 
@@ -258,9 +250,6 @@ export default function Home() {
                 <CardContent className="p-6">
                   <h3 className="text-xl font-bold mb-2">Aceites y Lubricantes</h3>
                   <p className="text-[#7A7A7A] mb-4">Aceites de motor, transmisión y lubricantes especiales</p>
-                  <Button variant="link" className="text-[#D32F2F] p-0 h-auto font-medium">
-                    Ver productos <ChevronRight className="ml-1 h-4 w-4" />
-                  </Button>
                 </CardContent>
               </Card>
 
@@ -276,15 +265,8 @@ export default function Home() {
                 <CardContent className="p-6">
                   <h3 className="text-xl font-bold mb-2">Accesorios</h3>
                   <p className="text-[#7A7A7A] mb-4">Espejos, manillares, puños y más accesorios</p>
-                  <Button variant="link" className="text-[#D32F2F] p-0 h-auto font-medium">
-                    Ver productos <ChevronRight className="ml-1 h-4 w-4" />
-                  </Button>
                 </CardContent>
               </Card>
-            </div>
-
-            <div className="mt-12 text-center">
-              <Button className="bg-[#D32F2F] hover:bg-[#D32F2F]/80 px-8">Ver todos los productos</Button>
             </div>
           </div>
         </section>
@@ -424,10 +406,20 @@ export default function Home() {
                 <div className="mt-8">
                   <h4 className="font-medium mb-4">Síguenos en redes sociales</h4>
                   <div className="flex gap-4">
-                    <a href="#" className="rounded-full bg-[#7A7A7A]/20 p-3 hover:bg-[#D32F2F]/20 transition-colors">
+                    <a
+                      href="https://instagram.com/foxmotorep"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-full bg-[#7A7A7A]/20 p-3 hover:bg-[#D32F2F]/20 transition-colors"
+                    >
                       <Instagram className="h-5 w-5 text-[#D32F2F]" />
                     </a>
-                    <a href="#" className="rounded-full bg-[#7A7A7A]/20 p-3 hover:bg-[#D32F2F]/20 transition-colors">
+                    <a
+                      href="https://facebook.com/foxmotorepuestosbb"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-full bg-[#7A7A7A]/20 p-3 hover:bg-[#D32F2F]/20 transition-colors"
+                    >
                       <Facebook className="h-5 w-5 text-[#D32F2F]" />
                     </a>
                   </div>
@@ -526,10 +518,20 @@ export default function Home() {
                 Todo lo que necesitas para tu moto en un solo lugar. Repuestos, accesorios y más.
               </p>
               <div className="flex gap-4">
-                <a href="#" className="text-[#7A7A7A] hover:text-[#D32F2F]">
+                <a
+                  href="https://instagram.com/foxmotorep"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#7A7A7A] hover:text-[#D32F2F]"
+                >
                   <Instagram className="h-5 w-5" />
                 </a>
-                <a href="#" className="text-[#7A7A7A] hover:text-[#D32F2F]">
+                <a
+                  href="https://facebook.com/foxmotorepuestosbb"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#7A7A7A] hover:text-[#D32F2F]"
+                >
                   <Facebook className="h-5 w-5" />
                 </a>
               </div>

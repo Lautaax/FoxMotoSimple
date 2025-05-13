@@ -136,13 +136,17 @@ export function MobileMenu() {
             style={{ transitionDelay: isOpen ? "400ms" : "0ms" }}
           >
             <a
-              href="#"
+              href="https://instagram.com/foxmotorep"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-[#7A7A7A]/20 p-3 hover:bg-[#D32F2F]/20 transition-colors hover:scale-110 transform duration-200"
             >
               <Instagram className="h-5 w-5 text-[#D32F2F]" />
             </a>
             <a
-              href="#"
+              href="https://facebook.com/foxmotorepuestosbb"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-[#7A7A7A]/20 p-3 hover:bg-[#D32F2F]/20 transition-colors hover:scale-110 transform duration-200"
             >
               <Facebook className="h-5 w-5 text-[#D32F2F]" />
