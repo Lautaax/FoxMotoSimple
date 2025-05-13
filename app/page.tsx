@@ -133,8 +133,7 @@ export default function Home() {
               </div>
               <div className="flex items-center justify-center md:justify-end gap-2">
                 <Clock className="h-5 w-5 text-[#D32F2F]" />
-                <span>|Lun-Vie: 9:00-21:00 | Sáb: 9:00-19:00 |</span>
-                <span>|Dom 10:00-18:00|</span>
+                <span>|Lun-Vie: 9:00-21:00 | Sáb: 9:00-19:00       | Dom 10:00-18:00|</span>
               </div>
             </div>
           </div>
@@ -523,11 +522,11 @@ export default function Home() {
                 </li>
                 <li className="flex items-start gap-3">
                   <Mail className="h-5 w-5 text-[#D32F2F] mt-0.5" />
-                  <span className="text-[#7A7A7A]">info@foxmotorepuestos.com</span>
+                  <span className="text-[#7A7A7A]">foxmotorepuestos@gmail.com</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Clock className="h-5 w-5 text-[#D32F2F] mt-0.5" />
-                  <span className="text-[#7A7A7A]">Lun-Vie: 9:00-18:00 | Sáb: 9:00-13:00</span>
+                  <span className="text-[#7A7A7A]">|Lun-Vie: 9:00-21:00 | Sáb: 9:00-19:00 | Dom 10:00-18:00|</span>
                 </li>
               </ul>
             </div>
