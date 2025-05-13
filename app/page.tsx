@@ -19,6 +19,7 @@ import { MobileMenu } from "@/components/mobile-menu"
 import { ImageCarousel } from "@/components/image-carousel"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 
 export default function Home() {
   // Imágenes para el carrusel
@@ -425,6 +426,8 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+
+            </div>
 
             <div className="mt-12">
               <div className="bg-[#1C1C1C] p-2 rounded-lg border border-[#7A7A7A]/20 h-[400px] w-full">
