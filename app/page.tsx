@@ -508,20 +508,7 @@ export default function Home() {
                   <SocialStats platform="instagram" className="mb-6" />
 
                   {/* Feed de Instagram */}
-                  <div className="mb-6">
-                    <h4 className="font-medium mb-3">Publicaciones recientes</h4>
-                    <InstagramFeed username="foxmotorep" initialPosts={2} />
-                  </div>
-
-                  <a
-                    href="https://instagram.com/foxmotorep"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] text-white py-3 px-4 rounded-lg font-medium hover:opacity-90 transition-opacity"
-                  >
-                    Seguir en Instagram
-                    <ExternalLink className="h-4 w-4" />
-                  </a>
+                  
                 </div>
               </div>
 
@@ -548,25 +535,6 @@ export default function Home() {
                     información sobre nuestros productos.
                   </p>
 
-                  <div className="bg-[#252525] rounded-md overflow-hidden relative h-[180px] mb-6">
-                    <Image src="/social/facebook-cover.png" alt="Facebook cover" fill className="object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
-                      <div>
-                        <h4 className="font-bold text-white">Fox Motorepuestos</h4>
-                        <p className="text-sm text-gray-300">Tienda de repuestos para motos</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <a
-                    href="https://facebook.com/foxmotorepuestosbb"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 bg-gradient-to-r from-[#1877F2] to-[#3b5998] text-white py-3 px-4 rounded-lg font-medium hover:opacity-90 transition-opacity"
-                  >
-                    Seguir en Facebook
-                    <ExternalLink className="h-4 w-4" />
-                  </a>
                 </div>
               </div>
             </div>
