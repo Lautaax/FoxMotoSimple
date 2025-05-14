@@ -122,7 +122,7 @@ export function MobileMenu() {
                 <div className="rounded-full bg-[#D32F2F]/10 p-2">
                   <Clock className="h-4 w-4 text-[#D32F2F]" />
                 </div>
-                <span>Lun-Vie: 9:00-18:00 | Sáb: 9:00-13:00</span>
+                <span>Lun-Vie: 9:00-21:00 | Sáb: 9:00-19:00 | Dom: 10:00-18:00</span>
               </div>
             </div>
           </div>
