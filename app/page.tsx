@@ -501,7 +501,7 @@ export default function Home() {
                   <Instagram className="h-6 w-6" />
                 </a>
                 <a
-                  href="https://facebook.com/foxmotorepuestosbb"
+                  href="https://facebook.com/foxmotorespuestosbb"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#7A7A7A] hover:text-[#1877F2] transition-colors"
