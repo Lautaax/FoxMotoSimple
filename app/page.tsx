@@ -229,7 +229,7 @@ export default function Home() {
               <Card className="bg-[#1C1C1C] border-[#7A7A7A]/20 overflow-hidden group">
                 <div className="relative h-48">
                   <Image
-                    src="/products/tires.jpg"
+                    src="/products/tires.png"
                     alt="Neumáticos"
                     fill
                     className="object-cover transition-transform group-hover:scale-105"
