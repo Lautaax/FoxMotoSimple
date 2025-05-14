@@ -14,10 +14,16 @@ import {
   ShoppingBag,
   Truck,
   CreditCard,
+  Share2,
+  ExternalLink,
 } from "lucide-react"
 import { MobileMenu } from "@/components/mobile-menu"
 import { ImageCarousel } from "@/components/image-carousel"
 import { WhatsAppButton } from "@/components/whatsapp-button"
+import { SocialCard } from "@/components/social-card"
+import { FollowerCounter } from "@/components/follower-counter"
+import { SocialStats } from "@/components/social-stats"
+import { InstagramFeed } from "@/components/instagram-feed"
 
 export default function Home() {
   // Imágenes para el carrusel
@@ -27,7 +33,7 @@ export default function Home() {
       alt: "Taller de Fox Motorepuestos",
     },
     {
-      src: "/carousel/motorcycle-parts.png",
+      src: "/carousel/motorcycle-parts.jpg",
       alt: "Repuestos de motos",
     },
     {
@@ -35,7 +41,7 @@ export default function Home() {
       alt: "Frente de la tienda Fox Motorepuestos",
     },
     {
-      src: "/carousel/mechanic.png",
+      src: "/carousel/mechanic.jpg",
       alt: "Mecánico trabajando en una moto",
     },
     {
@@ -111,7 +117,7 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button className="bg-[#D32F2F] hover:bg-[#D32F2F]/80 text-lg px-8 py-6">
-                  Tienda (Proximamente)
+                  Tienda (Próximamente)
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
@@ -133,7 +139,7 @@ export default function Home() {
               </div>
               <div className="flex items-center justify-center md:justify-end gap-2">
                 <Clock className="h-5 w-5 text-[#D32F2F]" />
-                <span>|Lun-Vie: 9:00-21:00 | Sáb: 9:00-19:00       | Dom 10:00-18:00|</span>
+                <span>Lun-Vie: 9:00-21:00 | Sáb: 9:00-19:00 | Dom: 10:00-18:00</span>
               </div>
             </div>
           </div>
@@ -223,7 +229,7 @@ export default function Home() {
               <Card className="bg-[#1C1C1C] border-[#7A7A7A]/20 overflow-hidden group">
                 <div className="relative h-48">
                   <Image
-                    src="/products/tires.png"
+                    src="/products/tires.jpg"
                     alt="Neumáticos"
                     fill
                     className="object-cover transition-transform group-hover:scale-105"
@@ -279,7 +285,7 @@ export default function Home() {
                 <h2 className="text-3xl font-bold tracking-tighter md:text-4xl mb-6">Fox Motorepuestos</h2>
                 <p className="text-[#7A7A7A] mb-6 text-lg">
                   Somos una empresa dedicada a la venta de repuestos y accesorios para motos de todas las marcas y
-                  cilindradas. Con años de experiencia en el mercado, nos estamos consolidando como un referente en Bahía
+                  cilindradas. Con años de experiencia en el mercado, nos hemos consolidado como un referente en Bahía
                   Blanca y la zona.
                 </p>
                 <p className="text-[#7A7A7A] mb-8 text-lg">
@@ -401,33 +407,60 @@ export default function Home() {
                   </div>
                 </div>
 
+                {/* Nueva sección destacada de redes sociales */}
+                <div className="mt-8 border-t border-[#7A7A7A]/20 pt-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Share2 className="h-5 w-5 text-[#D32F2F]" />
+                    <h4 className="font-bold text-lg">Síguenos en redes sociales</h4>
+                  </div>
 
-                <div className="mt-8">
-                  <h4 className="font-medium mb-4">Síguenos en redes sociales</h4>
-                  <div className="flex gap-4">
-                    <a
-                      href="https://instagram.com/foxmotorep"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="rounded-full bg-[#7A7A7A]/20 p-3 hover:bg-[#D32F2F]/20 transition-colors"
-                    >
-                      <Instagram className="h-5 w-5 text-[#D32F2F]" />
-                    </a>
-                    <a
-                      href="https://facebook.com/foxmotorepuestosbb"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="rounded-full bg-[#7A7A7A]/20 p-3 hover:bg-[#D32F2F]/20 transition-colors"
-                    >
-                      <Facebook className="h-5 w-5 text-[#D32F2F]" />
-                    </a>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-[#252525] p-4 rounded-lg">
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center gap-2">
+                          <div className="bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] p-[1px] rounded-full">
+                            <div className="bg-[#252525] rounded-full p-1">
+                              <Instagram className="h-5 w-5 text-white" />
+                            </div>
+                          </div>
+                          <span className="font-medium">Instagram</span>
+                        </div>
+                        <FollowerCounter count={1250} animated={false} className="flex-row gap-1" />
+                      </div>
+                      <SocialCard
+                        platform="instagram"
+                        username="foxmotorep"
+                        url="https://instagram.com/foxmotorep"
+                        description="Novedades, productos y más"
+                      />
+                    </div>
+
+                    <div className="bg-[#252525] p-4 rounded-lg">
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center gap-2">
+                          <div className="bg-[#1877F2] p-[1px] rounded-full">
+                            <div className="bg-[#252525] rounded-full p-1">
+                              <Facebook className="h-5 w-5 text-white" />
+                            </div>
+                          </div>
+                          <span className="font-medium">Facebook</span>
+                        </div>
+                        <FollowerCounter count={2340} animated={false} className="flex-row gap-1" />
+                      </div>
+                      <SocialCard
+                        platform="facebook"
+                        username="foxmotorepuestosbb"
+                        url="https://facebook.com/foxmotorepuestosbb"
+                        description="Ofertas y eventos especiales"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
 
               <div className="bg-[#1C1C1C] p-4 rounded-lg border border-[#7A7A7A]/20 h-full min-h-[500px]">
-               <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3855.8570646094145!2d-62.30636570000001!3d-38.69764060000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95edbb0b219851e3%3A0xd76531ce46a29e96!2sManzana%20de%20las%20Luces%20475%2C%20B8003IRI%20Bah%C3%ADa%20Blanca%2C%20Provincia%20de%20Buenos%20Aires!5e1!3m2!1ses!2sar!4v1747179776052!5m2!1ses!2sar"
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3113.5!2d-62.2!3d-38.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDQyJzAwLjAiUyA2MsKwMTInMDAuMCJX!5e0!3m2!1ses!2sar!4v1620000000000!5m2!1ses!2sar"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -441,8 +474,105 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </main>
 
+        {/* Nueva sección de redes sociales */}
+        <section className="py-16 bg-[#1C1C1C]">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+              <div className="inline-block rounded-lg bg-[#D32F2F]/10 px-3 py-1 text-sm text-[#D32F2F] mb-2">
+                Comunidad
+              </div>
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Conéctate con nosotros</h2>
+              <p className="max-w-[700px] text-[#7A7A7A] md:text-lg">
+                Sigue nuestras redes sociales para estar al día con las últimas novedades, ofertas y eventos
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Instagram Card */}
+              <div className="bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] p-[2px] rounded-xl">
+                <div className="bg-[#1C1C1C] rounded-xl p-6 h-full">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] p-[2px] rounded-full">
+                      <div className="bg-[#1C1C1C] rounded-full p-2">
+                        <Instagram className="h-8 w-8 text-white" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold">Instagram</h3>
+                      <p className="text-[#7A7A7A]">@foxmotorep</p>
+                    </div>
+                  </div>
+
+                  {/* Estadísticas de Instagram */}
+                  <SocialStats platform="instagram" className="mb-6" />
+
+                  {/* Feed de Instagram */}
+                  <div className="mb-6">
+                    <h4 className="font-medium mb-3">Publicaciones recientes</h4>
+                    <InstagramFeed username="foxmotorep" initialPosts={2} />
+                  </div>
+
+                  <a
+                    href="https://instagram.com/foxmotorep"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] text-white py-3 px-4 rounded-lg font-medium hover:opacity-90 transition-opacity"
+                  >
+                    Seguir en Instagram
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Facebook Card */}
+              <div className="bg-gradient-to-r from-[#1877F2] to-[#3b5998] p-[2px] rounded-xl">
+                <div className="bg-[#1C1C1C] rounded-xl p-6 h-full">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="bg-gradient-to-r from-[#1877F2] to-[#3b5998] p-[2px] rounded-full">
+                      <div className="bg-[#1C1C1C] rounded-full p-2">
+                        <Facebook className="h-8 w-8 text-white" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold">Facebook</h3>
+                      <p className="text-[#7A7A7A]">@foxmotorepuestosbb</p>
+                    </div>
+                  </div>
+
+                  {/* Estadísticas de Facebook */}
+                  <SocialStats platform="facebook" className="mb-6" />
+
+                  <p className="text-[#7A7A7A] mb-6">
+                    Conéctate con nosotros en Facebook para recibir actualizaciones, ofertas especiales, eventos y más
+                    información sobre nuestros productos.
+                  </p>
+
+                  <div className="bg-[#252525] rounded-md overflow-hidden relative h-[180px] mb-6">
+                    <Image src="/social/facebook-cover.png" alt="Facebook cover" fill className="object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+                      <div>
+                        <h4 className="font-bold text-white">Fox Motorepuestos</h4>
+                        <p className="text-sm text-gray-300">Tienda de repuestos para motos</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <a
+                    href="https://facebook.com/foxmotorepuestosbb"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 bg-gradient-to-r from-[#1877F2] to-[#3b5998] text-white py-3 px-4 rounded-lg font-medium hover:opacity-90 transition-opacity"
+                  >
+                    Seguir en Facebook
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
 
       {/* Footer */}
       <footer className="bg-[#1C1C1C] border-t border-[#7A7A7A]/20 py-8">
@@ -463,17 +593,19 @@ export default function Home() {
                   href="https://instagram.com/foxmotorep"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#7A7A7A] hover:text-[#D32F2F]"
+                  className="text-[#7A7A7A] hover:text-[#FD1D1D] transition-colors"
+                  aria-label="Instagram"
                 >
-                  <Instagram className="h-5 w-5" />
+                  <Instagram className="h-6 w-6" />
                 </a>
                 <a
                   href="https://facebook.com/foxmotorepuestosbb"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#7A7A7A] hover:text-[#D32F2F]"
+                  className="text-[#7A7A7A] hover:text-[#1877F2] transition-colors"
+                  aria-label="Facebook"
                 >
-                  <Facebook className="h-5 w-5" />
+                  <Facebook className="h-6 w-6" />
                 </a>
               </div>
             </div>
@@ -522,18 +654,18 @@ export default function Home() {
                 </li>
                 <li className="flex items-start gap-3">
                   <Mail className="h-5 w-5 text-[#D32F2F] mt-0.5" />
-                  <span className="text-[#7A7A7A]">foxmotorepuestos@gmail.com</span>
+                  <span className="text-[#7A7A7A]">info@foxmotorepuestos.com</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Clock className="h-5 w-5 text-[#D32F2F] mt-0.5" />
-                  <span className="text-[#7A7A7A]">|Lun-Vie: 9:00-21:00 | Sáb: 9:00-19:00 | Dom 10:00-18:00|</span>
+                  <span className="text-[#7A7A7A]">Lun-Vie: 9:00-21:00 | Sáb: 9:00-19:00 | Dom: 10:00-18:00</span>
                 </li>
               </ul>
             </div>
           </div>
 
           <div className="border-t border-[#7A7A7A]/20 mt-8 pt-8 text-center text-[#7A7A7A]">
-            <p>&copy; {new Date().getFullYear()} Fox Motorepuestos. Todos los derechos reservados. Web Diseñada por @_lautaaj</p>
+            <p>&copy; {new Date().getFullYear()} Fox Motorepuestos. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>
