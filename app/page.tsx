@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -8,22 +10,24 @@ import {
   Clock,
   ChevronRight,
   Mail,
-  Instagram,
-  Facebook,
   Wrench,
   ShoppingBag,
   Truck,
   CreditCard,
   Share2,
   ExternalLink,
+  Facebook,
+  Instagram,
+  Star,
+  ThumbsUp,
 } from "lucide-react"
 import { MobileMenu } from "@/components/mobile-menu"
 import { ImageCarousel } from "@/components/image-carousel"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { SocialCard } from "@/components/social-card"
 import { FollowerCounter } from "@/components/follower-counter"
-import { SocialStats } from "@/components/social-stats"
-import { InstagramFeed } from "@/components/instagram-feed"
+import { GoogleMyBusiness } from "@/components/google-my-business"
+
 
 export default function Home() {
   // Imágenes para el carrusel
@@ -542,6 +546,68 @@ export default function Home() {
                 </li>
               </ul>
             </div>
+
+
+        {/* Google My Business Section */}
+        <section className="py-16 bg-[#252525]">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+              <div className="inline-block rounded-lg bg-[#D32F2F]/10 px-3 py-1 text-sm text-[#D32F2F] mb-2">
+                Google My Business
+              </div>
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Encuéntranos en Google</h2>
+              <p className="max-w-[700px] text-[#7A7A7A] md:text-lg">
+                Visita nuestro perfil de Google para ver reseñas, fotos y más información
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="lg:col-span-2">
+                <GoogleMyBusiness />
+              </div>
+              <div className="bg-[#1C1C1C] p-6 rounded-lg border border-[#7A7A7A]/20">
+                <h3 className="text-xl font-bold mb-4">¿Por qué dejarnos una reseña?</h3>
+                <p className="text-[#7A7A7A] mb-6">
+                  Tu opinión nos ayuda a mejorar y permite que otros clientes conozcan nuestra calidad de servicio.
+                  Además, nos ayuda a ser más visibles en Google.
+                </p>
+
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="rounded-full bg-[#D32F2F]/10 p-2 mt-1">
+                      <Star className="h-5 w-5 text-[#D32F2F]" />
+                    </div>
+                    <div>
+                      <h4 className="font-medium">Comparte tu experiencia</h4>
+                      <p className="text-sm text-[#7A7A7A]">Cuéntanos cómo fue tu visita a nuestra tienda</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <div className="rounded-full bg-[#D32F2F]/10 p-2 mt-1">
+                      <ThumbsUp className="h-5 w-5 text-[#D32F2F]" />
+                    </div>
+                    <div>
+                      <h4 className="font-medium">Ayuda a otros clientes</h4>
+                      <p className="text-sm text-[#7A7A7A]">
+                        Tu opinión puede ayudar a otros a encontrar lo que necesitan
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <Button
+                  className="w-full mt-6 bg-[#4285F4] hover:bg-[#4285F4]/80"
+                  onClick={() => window.open("https://g.page/r/foxmotorepuestosbb/review", "_blank")}
+                >
+                  Dejar una reseña en Google
+                  <ExternalLink className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
 
             <div>
               <h3 className="font-bold mb-4">Contacto</h3>
