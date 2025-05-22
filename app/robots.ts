@@ -1,4 +1,4 @@
-import { getBaseUrl } from "@/lib/utils"
+import { getBaseUrl } from "@/lib/url-utils"
 
 export default function robots() {
   const baseUrl = getBaseUrl()
@@ -8,7 +8,16 @@ export default function robots() {
       {
         userAgent: "*",
         allow: "/",
+        disallow: ["/admin/", "/private/", "/api/", "/_next/", "/server-sitemap.xml", "/*.json$", "/*.js$", "/*.css$"],
+      },
+      {
+        userAgent: "Googlebot",
+        allow: "/",
         disallow: ["/admin/", "/private/"],
+      },
+      {
+        userAgent: "Googlebot-Image",
+        allow: ["/images/", "/productos/", "/public/"],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

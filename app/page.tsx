@@ -27,7 +27,13 @@ import { WhatsAppButton } from "@/components/whatsapp-button"
 import { SocialCard } from "@/components/social-card"
 import { FollowerCounter } from "@/components/follower-counter"
 import { GoogleMyBusiness } from "@/components/google-my-business"
-
+import { DebugEnvironment } from "@/components/debug-environment"
+import { ScrollToTop } from "@/components/scroll-to-top"
+import { CookieConsent } from "@/components/cookie-consent"
+import { AnimatedSection } from "@/components/animated-section"
+import { NewsletterSignup } from "@/components/newsletter-signup"
+import { MotorcycleFinder } from "@/components/motorcycle-finder"
+import { LocalSEO } from "@/components/local-seo"
 
 export default function Home() {
   // Imágenes para el carrusel
@@ -51,6 +57,37 @@ export default function Home() {
     {
       src: "/carousel/accessories.png",
       alt: "Accesorios para motos",
+    },
+  ]
+
+  // Datos de testimonios para el carrusel
+  const testimonials = [
+    {
+      id: 1,
+      name: "Carlos Rodríguez",
+      role: "Cliente frecuente",
+      content:
+        "Excelente atención y variedad de repuestos. Encontré todo lo que necesitaba para mi Honda. Precios justos y buena calidad. El personal es muy amable y conocedor.",
+      rating: 5,
+      image: "/testimonials/user1.jpg",
+    },
+    {
+      id: 2,
+      name: "Laura Martínez",
+      role: "Motociclista",
+      content:
+        "Muy buena atención, tienen casi todo lo que se necesita. El personal es muy amable y conocedor. Siempre encuentro lo que busco y a buen precio.",
+      rating: 4,
+      image: "/testimonials/user2.jpg",
+    },
+    {
+      id: 3,
+      name: "Martín González",
+      role: "Mecánico profesional",
+      content:
+        "El mejor lugar para conseguir repuestos en Bahía. La calidad de los productos es excelente y los precios son competitivos. Recomiendo ampliamente este negocio.",
+      rating: 5,
+      image: "/testimonials/user3.jpg",
     },
   ]
 
@@ -352,134 +389,145 @@ export default function Home() {
         {/* Contact Section */}
         <section id="contacto" className="py-16 bg-[#252525]">
           <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-              <div className="inline-block rounded-lg bg-[#D32F2F]/10 px-3 py-1 text-sm text-[#D32F2F] mb-2">
-                Contacto
+            <AnimatedSection animation="fade-up">
+              <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                <div className="inline-block rounded-lg bg-[#D32F2F]/10 px-3 py-1 text-sm text-[#D32F2F] mb-2">
+                  Contacto
+                </div>
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">¿Necesitas ayuda? Contáctanos</h2>
+                <p className="max-w-[700px] text-[#7A7A7A] md:text-lg">
+                  Estamos aquí para ayudarte a encontrar lo que necesitas para tu moto
+                </p>
               </div>
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">¿Necesitas ayuda? Contáctanos</h2>
-              <p className="max-w-[700px] text-[#7A7A7A] md:text-lg">
-                Estamos aquí para ayudarte a encontrar lo que necesitas para tu moto
-              </p>
-            </div>
+            </AnimatedSection>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div className="bg-[#1C1C1C] p-8 rounded-lg border border-[#7A7A7A]/20">
-                <h3 className="text-xl font-bold mb-6">Información de Contacto</h3>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <AnimatedSection animation="slide-in-left" className="lg:col-span-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="bg-[#1C1C1C] p-8 rounded-lg border border-[#7A7A7A]/20">
+                    <h3 className="text-xl font-bold mb-6">Información de Contacto</h3>
 
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="rounded-full bg-[#D32F2F]/10 p-3 mt-1">
-                      <MapPin className="h-5 w-5 text-[#D32F2F]" />
+                    <div className="space-y-6">
+                      <div className="flex items-start gap-4">
+                        <div className="rounded-full bg-[#D32F2F]/10 p-3 mt-1">
+                          <MapPin className="h-5 w-5 text-[#D32F2F]" />
+                        </div>
+                        <div>
+                          <h4 className="font-medium mb-1">Dirección</h4>
+                          <p className="text-[#7A7A7A]">Manzana de las Luces 475</p>
+                          <p className="text-[#7A7A7A]">Bahía Blanca, Buenos Aires</p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-4">
+                        <div className="rounded-full bg-[#D32F2F]/10 p-3 mt-1">
+                          <Phone className="h-5 w-5 text-[#D32F2F]" />
+                        </div>
+                        <div>
+                          <h4 className="font-medium mb-1">Teléfono</h4>
+                          <p className="text-[#7A7A7A]">291 534-7003</p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-4">
+                        <div className="rounded-full bg-[#D32F2F]/10 p-3 mt-1">
+                          <Mail className="h-5 w-5 text-[#D32F2F]" />
+                        </div>
+                        <div>
+                          <h4 className="font-medium mb-1">Email</h4>
+                          <p className="text-[#7A7A7A]">info@foxmotorepuestos.com</p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-4">
+                        <div className="rounded-full bg-[#D32F2F]/10 p-3 mt-1">
+                          <Clock className="h-5 w-5 text-[#D32F2F]" />
+                        </div>
+                        <div>
+                          <h4 className="font-medium mb-1">Horario de Atención</h4>
+                          <p className="text-[#7A7A7A]">Lunes a Viernes: 9:00 - 21:00</p>
+                          <p className="text-[#7A7A7A]">Sábados: 9:00 - 19:00</p>
+                          <p className="text-[#7A7A7A]">Domingos: 10:00 - 18:00</p>
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="font-medium mb-1">Dirección</h4>
-                      <p className="text-[#7A7A7A]">Manzana de las Luces 475</p>
-                      <p className="text-[#7A7A7A]">Bahía Blanca, Buenos Aires</p>
+
+                    {/* Nueva sección destacada de redes sociales */}
+                    <div className="mt-8 border-t border-[#7A7A7A]/20 pt-6">
+                      <div className="flex items-center gap-2 mb-4">
+                        <Share2 className="h-5 w-5 text-[#D32F2F]" />
+                        <h4 className="font-bold text-lg">Síguenos en redes sociales</h4>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-[#252525] p-4 rounded-lg">
+                          <div className="flex items-center justify-between mb-3">
+                            <div className="flex items-center gap-2">
+                              <div className="bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] p-[1px] rounded-full">
+                                <div className="bg-[#252525] rounded-full p-1">
+                                  <Instagram className="h-5 w-5 text-white" />
+                                </div>
+                              </div>
+                              <span className="font-medium">Instagram</span>
+                            </div>
+                            <FollowerCounter count={1250} animated={false} className="flex-row gap-1" />
+                          </div>
+                          <SocialCard
+                            platform="instagram"
+                            username="foxmotorep"
+                            url="https://instagram.com/foxmotorep"
+                            description="Novedades, productos y más"
+                          />
+                        </div>
+
+                        <div className="bg-[#252525] p-4 rounded-lg">
+                          <div className="flex items-center justify-between mb-3">
+                            <div className="flex items-center gap-2">
+                              <div className="bg-[#1877F2] p-[1px] rounded-full">
+                                <div className="bg-[#252525] rounded-full p-1">
+                                  <Facebook className="h-5 w-5 text-white" />
+                                </div>
+                              </div>
+                              <span className="font-medium">Facebook</span>
+                            </div>
+                            <FollowerCounter count={2340} animated={false} className="flex-row gap-1" />
+                          </div>
+                          <SocialCard
+                            platform="facebook"
+                            username="foxmotorepuestosbb"
+                            url="https://facebook.com/foxmotorepuestosbb"
+                            description="Ofertas y eventos especiales"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="rounded-full bg-[#D32F2F]/10 p-3 mt-1">
-                      <Phone className="h-5 w-5 text-[#D32F2F]" />
-                    </div>
-                    <div>
-                      <h4 className="font-medium mb-1">Teléfono</h4>
-                      <p className="text-[#7A7A7A]">291 534-7003</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="rounded-full bg-[#D32F2F]/10 p-3 mt-1">
-                      <Mail className="h-5 w-5 text-[#D32F2F]" />
-                    </div>
-                    <div>
-                      <h4 className="font-medium mb-1">Email</h4>
-                      <p className="text-[#7A7A7A]">info@foxmotorepuestos.com</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="rounded-full bg-[#D32F2F]/10 p-3 mt-1">
-                      <Clock className="h-5 w-5 text-[#D32F2F]" />
-                    </div>
-                    <div>
-                      <h4 className="font-medium mb-1">Horario de Atención</h4>
-                      <p className="text-[#7A7A7A]">Lunes a Viernes: 9:00 - 21:00</p>
-                      <p className="text-[#7A7A7A]">Sábados: 9:00 - 19:00</p>
-                      <p className="text-[#7A7A7A]">Domingos: 10:00 - 18:00</p>
-                    </div>
+                  <div className="bg-[#1C1C1C] p-4 rounded-lg border border-[#7A7A7A]/20 h-full min-h-[500px]">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3113.5!2d-62.2!3d-38.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDQyJzAwLjAiUyA2MsKwMTInMDAuMCJX!5e0!3m2!1ses!2sar!4v1620000000000!5m2!1ses!2sar"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="rounded-lg"
+                      title="Ubicación de Fox Motorepuestos"
+                    ></iframe>
                   </div>
                 </div>
+              </AnimatedSection>
 
-                {/* Nueva sección destacada de redes sociales */}
-                <div className="mt-8 border-t border-[#7A7A7A]/20 pt-6">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Share2 className="h-5 w-5 text-[#D32F2F]" />
-                    <h4 className="font-bold text-lg">Síguenos en redes sociales</h4>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="bg-[#252525] p-4 rounded-lg">
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center gap-2">
-                          <div className="bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] p-[1px] rounded-full">
-                            <div className="bg-[#252525] rounded-full p-1">
-                              <Instagram className="h-5 w-5 text-white" />
-                            </div>
-                          </div>
-                          <span className="font-medium">Instagram</span>
-                        </div>
-                        <FollowerCounter count={1250} animated={false} className="flex-row gap-1" />
-                      </div>
-                      <SocialCard
-                        platform="instagram"
-                        username="foxmotorep"
-                        url="https://instagram.com/foxmotorep"
-                        description="Novedades, productos y más"
-                      />
-                    </div>
-
-                    <div className="bg-[#252525] p-4 rounded-lg">
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center gap-2">
-                          <div className="bg-[#1877F2] p-[1px] rounded-full">
-                            <div className="bg-[#252525] rounded-full p-1">
-                              <Facebook className="h-5 w-5 text-white" />
-                            </div>
-                          </div>
-                          <span className="font-medium">Facebook</span>
-                        </div>
-                        <FollowerCounter count={2340} animated={false} className="flex-row gap-1" />
-                      </div>
-                      <SocialCard
-                        platform="facebook"
-                        username="foxmotorepuestosbb"
-                        url="https://facebook.com/foxmotorepuestosbb"
-                        description="Ofertas y eventos especiales"
-                      />
-                    </div>
-                  </div>
+              <AnimatedSection animation="slide-in-right">
+                <div className="space-y-8">
+                  <MotorcycleFinder />
+                  <NewsletterSignup className="bg-[#1C1C1C] p-6 rounded-lg border border-[#7A7A7A]/20" />
                 </div>
-              </div>
-
-              <div className="bg-[#1C1C1C] p-4 rounded-lg border border-[#7A7A7A]/20 h-full min-h-[500px]">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3113.5!2d-62.2!3d-38.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDQyJzAwLjAiUyA2MsKwMTInMDAuMCJX!5e0!3m2!1ses!2sar!4v1620000000000!5m2!1ses!2sar"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="rounded-lg"
-                  title="Ubicación de Fox Motorepuestos"
-                ></iframe>
-              </div>
+              </AnimatedSection>
             </div>
           </div>
         </section>
-      </main>
-
 
         {/* Google My Business Section */}
         <section className="py-16 bg-[#252525]">
@@ -540,7 +588,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-
+      </main>
 
       {/* Footer */}
       <footer className="bg-[#1C1C1C] border-t border-[#7A7A7A]/20 py-8">
@@ -609,7 +657,6 @@ export default function Home() {
               </ul>
             </div>
 
-
             <div>
               <h3 className="font-bold mb-4">Contacto</h3>
               <ul className="space-y-3">
@@ -633,14 +680,20 @@ export default function Home() {
             </div>
           </div>
 
-
-
-
           <div className="border-t border-[#7A7A7A]/20 mt-8 pt-8 text-center text-[#7A7A7A]">
             <p>&copy; {new Date().getFullYear()} Fox Motorepuestos. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>
+
+      {/* Local SEO Component */}
+      <LocalSEO />
+
+      {/* Añadir el componente de depuración al final */}
+      <DebugEnvironment />
+      {/* Añadir componentes al final del return */}
+      <ScrollToTop />
+      <CookieConsent />
     </div>
   )
 }

@@ -1,18 +1,28 @@
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
+import { isProduction } from "./lib/url-utils"
 
 // Este middleware se ejecuta en cada solicitud
 export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone()
   const hostname = request.headers.get("host") || ""
 
-  // Redirigir de dominio sin www a dominio con www (canonicalización)
-  if (hostname === "foxmotorepuestos.com") {
-    // Asegurarse de mantener el protocolo original
-    const protocol = request.nextUrl.protocol || "https:"
-    url.host = "www.foxmotorepuestos.com"
-    url.protocol = protocol
-    return NextResponse.redirect(url)
+  // Solo aplicar redirecciones en producción
+  if (isProduction()) {
+    // Redirigir de dominio sin www a dominio con www (canonicalización)
+    if (hostname === "foxmotorepuestos.com") {
+      // Asegurarse de mantener el protocolo original
+      const protocol = request.nextUrl.protocol || "https:"
+      url.host = "www.foxmotorepuestos.com"
+      url.protocol = protocol
+      return NextResponse.redirect(url)
+    }
+
+    // Redirigir de HTTP a HTTPS
+    if (request.nextUrl.protocol === "http:") {
+      url.protocol = "https:"
+      return NextResponse.redirect(url)
+    }
   }
 
   // Permitir que la solicitud continúe
