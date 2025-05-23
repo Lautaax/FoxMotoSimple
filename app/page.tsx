@@ -18,8 +18,6 @@ import {
   ExternalLink,
   Facebook,
   Instagram,
-  Star,
-  ThumbsUp,
 } from "lucide-react"
 import { MobileMenu } from "@/components/mobile-menu"
 import { ImageCarousel } from "@/components/image-carousel"
@@ -169,7 +167,7 @@ export default function Home() {
         {/* Info Bar */}
         <section className="bg-[#7A7A7A] py-4">
           <div className="container px-4 md:px-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
               <div className="flex items-center justify-center md:justify-start gap-2">
                 <MapPin className="h-5 w-5 text-[#D32F2F]" />
                 <span>Manzana de las Luces 475, Bahía Blanca</span>
@@ -199,7 +197,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center justify-items-center">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 sm:gap-6 lg:gap-8 items-center justify-items-center">
               <div className="bg-white/5 p-4 rounded-lg hover:bg-white/10 transition-colors flex items-center justify-center h-24 w-full">
                 <Image src="/brands/far-logo.png" alt="Far" width={100} height={50} className="max-h-12 w-auto" />
               </div>
@@ -251,7 +249,7 @@ export default function Home() {
               <p className="max-w-[700px] text-[#7A7A7A] md:text-lg">Encuentra todo lo que necesitas para tu moto</p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               <Card className="bg-[#1C1C1C] border-[#7A7A7A]/20 overflow-hidden group">
                 <div className="relative h-48">
                   <Image
@@ -387,8 +385,13 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section id="contacto" className="py-16 bg-[#252525]">
-          <div className="container px-4 md:px-6">
+        <section id="contacto" className="py-16 bg-[#252525] relative overflow-hidden">
+          {/* Elementos decorativos de fondo */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#D32F2F]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#D32F2F]/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-[#4285F4]/5 rounded-full blur-3xl"></div>
+
+          <div className="container px-4 md:px-6 relative z-10">
             <AnimatedSection animation="fade-up">
               <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                 <div className="inline-block rounded-lg bg-[#D32F2F]/10 px-3 py-1 text-sm text-[#D32F2F] mb-2">
@@ -401,190 +404,160 @@ export default function Home() {
               </div>
             </AnimatedSection>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <AnimatedSection animation="slide-in-left" className="lg:col-span-2">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="bg-[#1C1C1C] p-8 rounded-lg border border-[#7A7A7A]/20">
-                    <h3 className="text-xl font-bold mb-6">Información de Contacto</h3>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+              {/* Columna izquierda - Información de contacto */}
+              <AnimatedSection animation="slide-in-left" className="lg:col-span-5 order-1">
+                <div className="bg-[#1C1C1C] p-4 sm:p-6 lg:p-8 rounded-lg border border-[#7A7A7A]/20 shadow-lg hover:shadow-xl transition-shadow duration-300 h-full">
+                  <h3 className="text-xl font-bold mb-6 flex items-center">
+                    <span className="bg-[#D32F2F]/10 p-2 rounded-full mr-3">
+                      <Phone className="h-5 w-5 text-[#D32F2F]" />
+                    </span>
+                    Información de Contacto
+                  </h3>
 
-                    <div className="space-y-6">
-                      <div className="flex items-start gap-4">
-                        <div className="rounded-full bg-[#D32F2F]/10 p-3 mt-1">
-                          <MapPin className="h-5 w-5 text-[#D32F2F]" />
-                        </div>
-                        <div>
-                          <h4 className="font-medium mb-1">Dirección</h4>
-                          <p className="text-[#7A7A7A]">Manzana de las Luces 475</p>
-                          <p className="text-[#7A7A7A]">Bahía Blanca, Buenos Aires</p>
-                        </div>
+                  <div className="space-y-6">
+                    <div className="group flex items-start gap-4 transition-all duration-300 hover:translate-x-1">
+                      <div className="rounded-full bg-[#D32F2F]/10 p-3 mt-1 group-hover:bg-[#D32F2F]/20 transition-colors">
+                        <MapPin className="h-5 w-5 text-[#D32F2F]" />
                       </div>
-
-                      <div className="flex items-start gap-4">
-                        <div className="rounded-full bg-[#D32F2F]/10 p-3 mt-1">
-                          <Phone className="h-5 w-5 text-[#D32F2F]" />
-                        </div>
-                        <div>
-                          <h4 className="font-medium mb-1">Teléfono</h4>
-                          <p className="text-[#7A7A7A]">291 534-7003</p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start gap-4">
-                        <div className="rounded-full bg-[#D32F2F]/10 p-3 mt-1">
-                          <Mail className="h-5 w-5 text-[#D32F2F]" />
-                        </div>
-                        <div>
-                          <h4 className="font-medium mb-1">Email</h4>
-                          <p className="text-[#7A7A7A]">info@foxmotorepuestos.com</p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start gap-4">
-                        <div className="rounded-full bg-[#D32F2F]/10 p-3 mt-1">
-                          <Clock className="h-5 w-5 text-[#D32F2F]" />
-                        </div>
-                        <div>
-                          <h4 className="font-medium mb-1">Horario de Atención</h4>
-                          <p className="text-[#7A7A7A]">Lunes a Viernes: 9:00 - 21:00</p>
-                          <p className="text-[#7A7A7A]">Sábados: 9:00 - 19:00</p>
-                          <p className="text-[#7A7A7A]">Domingos: 10:00 - 18:00</p>
-                        </div>
+                      <div>
+                        <h4 className="font-medium mb-1">Dirección</h4>
+                        <p className="text-[#7A7A7A]">Manzana de las Luces 475</p>
+                        <p className="text-[#7A7A7A]">Bahía Blanca, Buenos Aires</p>
+                        <a
+                          href="https://maps.google.com/?q=Manzana+de+las+Luces+475,+Bahía+Blanca"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#D32F2F] text-sm flex items-center gap-1 mt-1 hover:underline"
+                        >
+                          Cómo llegar
+                          <ExternalLink className="h-3 w-3" />
+                        </a>
                       </div>
                     </div>
 
-                    {/* Nueva sección destacada de redes sociales */}
-                    <div className="mt-8 border-t border-[#7A7A7A]/20 pt-6">
-                      <div className="flex items-center gap-2 mb-4">
-                        <Share2 className="h-5 w-5 text-[#D32F2F]" />
-                        <h4 className="font-bold text-lg">Síguenos en redes sociales</h4>
+                    <div className="group flex items-start gap-4 transition-all duration-300 hover:translate-x-1">
+                      <div className="rounded-full bg-[#D32F2F]/10 p-3 mt-1 group-hover:bg-[#D32F2F]/20 transition-colors">
+                        <Phone className="h-5 w-5 text-[#D32F2F]" />
                       </div>
+                      <div>
+                        <h4 className="font-medium mb-1">Teléfono</h4>
+                        <a href="tel:+542915347003" className="text-[#7A7A7A] hover:text-[#D32F2F] transition-colors">
+                          291 534-7003
+                        </a>
+                      </div>
+                    </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="bg-[#252525] p-4 rounded-lg">
-                          <div className="flex items-center justify-between mb-3">
-                            <div className="flex items-center gap-2">
-                              <div className="bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] p-[1px] rounded-full">
-                                <div className="bg-[#252525] rounded-full p-1">
-                                  <Instagram className="h-5 w-5 text-white" />
-                                </div>
-                              </div>
-                              <span className="font-medium">Instagram</span>
-                            </div>
-                            <FollowerCounter count={1250} animated={false} className="flex-row gap-1" />
-                          </div>
-                          <SocialCard
-                            platform="instagram"
-                            username="foxmotorep"
-                            url="https://instagram.com/foxmotorep"
-                            description="Novedades, productos y más"
-                          />
-                        </div>
+                    <div className="group flex items-start gap-4 transition-all duration-300 hover:translate-x-1">
+                      <div className="rounded-full bg-[#D32F2F]/10 p-3 mt-1 group-hover:bg-[#D32F2F]/20 transition-colors">
+                        <Mail className="h-5 w-5 text-[#D32F2F]" />
+                      </div>
+                      <div>
+                        <h4 className="font-medium mb-1">Email</h4>
+                        <a
+                          href="mailto:info@foxmotorepuestos.com"
+                          className="text-[#7A7A7A] hover:text-[#D32F2F] transition-colors"
+                        >
+                          info@foxmotorepuestos.com
+                        </a>
+                      </div>
+                    </div>
 
-                        <div className="bg-[#252525] p-4 rounded-lg">
-                          <div className="flex items-center justify-between mb-3">
-                            <div className="flex items-center gap-2">
-                              <div className="bg-[#1877F2] p-[1px] rounded-full">
-                                <div className="bg-[#252525] rounded-full p-1">
-                                  <Facebook className="h-5 w-5 text-white" />
-                                </div>
-                              </div>
-                              <span className="font-medium">Facebook</span>
-                            </div>
-                            <FollowerCounter count={2340} animated={false} className="flex-row gap-1" />
-                          </div>
-                          <SocialCard
-                            platform="facebook"
-                            username="foxmotorepuestosbb"
-                            url="https://facebook.com/foxmotorepuestosbb"
-                            description="Ofertas y eventos especiales"
-                          />
-                        </div>
+                    <div className="group flex items-start gap-4 transition-all duration-300 hover:translate-x-1">
+                      <div className="rounded-full bg-[#D32F2F]/10 p-3 mt-1 group-hover:bg-[#D32F2F]/20 transition-colors">
+                        <Clock className="h-5 w-5 text-[#D32F2F]" />
+                      </div>
+                      <div>
+                        <h4 className="font-medium mb-1">Horario de Atención</h4>
+                        <p className="text-[#7A7A7A]">Lunes a Viernes: 9:00 - 21:00</p>
+                        <p className="text-[#7A7A7A]">Sábados: 9:00 - 19:00</p>
+                        <p className="text-[#7A7A7A]">Domingos: 10:00 - 18:00</p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="bg-[#1C1C1C] p-4 rounded-lg border border-[#7A7A7A]/20 h-full min-h-[500px]">
+                  {/* Sección de redes sociales */}
+                  <div className="mt-8 border-t border-[#7A7A7A]/20 pt-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Share2 className="h-5 w-5 text-[#D32F2F]" />
+                      <h4 className="font-bold text-lg">Síguenos en redes sociales</h4>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-4">
+                      <div className="bg-[#252525] p-4 rounded-lg hover:bg-[#252525]/70 transition-colors">
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="flex items-center gap-2">
+                            <div className="bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] p-[1px] rounded-full">
+                              <div className="bg-[#252525] rounded-full p-1">
+                                <Instagram className="h-5 w-5 text-white" />
+                              </div>
+                            </div>
+                            <span className="font-medium">Instagram</span>
+                          </div>
+                          <FollowerCounter count={1250} animated={true} className="flex-row gap-1" />
+                        </div>
+                        <SocialCard
+                          platform="instagram"
+                          username="foxmotorep"
+                          url="https://instagram.com/foxmotorep"
+                          description="Novedades, productos y más"
+                        />
+                      </div>
+
+                      <div className="bg-[#252525] p-4 rounded-lg hover:bg-[#252525]/70 transition-colors">
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="flex items-center gap-2">
+                            <div className="bg-[#1877F2] p-[1px] rounded-full">
+                              <div className="bg-[#252525] rounded-full p-1">
+                                <Facebook className="h-5 w-5 text-white" />
+                              </div>
+                            </div>
+                            <span className="font-medium">Facebook</span>
+                          </div>
+                          <FollowerCounter count={2340} animated={true} className="flex-row gap-1" />
+                        </div>
+                        <SocialCard
+                          platform="facebook"
+                          username="foxmotorepuestosbb"
+                          url="https://facebook.com/foxmotorepuestosbb"
+                          description="Ofertas y eventos especiales"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </AnimatedSection>
+
+              {/* Columna central - Mapa y Google My Business */}
+              <AnimatedSection animation="fade-up" className="lg:col-span-4 order-3 lg:order-2">
+                <div className="space-y-6 lg:space-y-8">
+                  <div className="bg-[#1C1C1C] p-4 rounded-lg border border-[#7A7A7A]/20 shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3113.5!2d-62.2!3d-38.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDQyJzAwLjAiUyA2MsKwMTInMDAuMCJX!5e0!3m2!1ses!2sar!4v1620000000000!5m2!1ses!2sar"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3113.8784438832517!2d-62.30894062323531!3d-38.69763638506989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95edbb0b219851e3%3A0xd76531ce46a29e96!2sManzana%20de%20las%20Luces%20475%2C%20B8003IRI%20Bah%C3%ADa%20Blanca%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1748027522957!5m2!1ses!2sar"
                       width="100%"
-                      height="100%"
+                      height="200"
                       style={{ border: 0 }}
                       allowFullScreen
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
-                      className="rounded-lg"
+                      className="rounded-lg sm:h-[250px]"
                       title="Ubicación de Fox Motorepuestos"
                     ></iframe>
                   </div>
+
+                  <div className="shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg overflow-hidden">
+                    <GoogleMyBusiness />
+                  </div>
                 </div>
               </AnimatedSection>
 
-              <AnimatedSection animation="slide-in-right">
-                <div className="space-y-8">
+              {/* Columna derecha - Herramientas y newsletter */}
+              <AnimatedSection animation="slide-in-right" className="lg:col-span-3 order-2 lg:order-3">
+                <div className="space-y-6 lg:space-y-8">
                   <MotorcycleFinder />
-                  <NewsletterSignup className="bg-[#1C1C1C] p-6 rounded-lg border border-[#7A7A7A]/20" />
+                  <NewsletterSignup className="bg-[#1C1C1C] p-6 rounded-lg border border-[#7A7A7A]/20 shadow-lg" />
                 </div>
               </AnimatedSection>
-            </div>
-          </div>
-        </section>
-
-        {/* Google My Business Section */}
-        <section className="py-16 bg-[#252525]">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-              <div className="inline-block rounded-lg bg-[#D32F2F]/10 px-3 py-1 text-sm text-[#D32F2F] mb-2">
-                Google My Business
-              </div>
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Encuéntranos en Google</h2>
-              <p className="max-w-[700px] text-[#7A7A7A] md:text-lg">
-                Visita nuestro perfil de Google para ver reseñas, fotos y más información
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <div className="lg:col-span-2">
-                <GoogleMyBusiness />
-              </div>
-              <div className="bg-[#1C1C1C] p-6 rounded-lg border border-[#7A7A7A]/20">
-                <h3 className="text-xl font-bold mb-4">¿Por qué dejarnos una reseña?</h3>
-                <p className="text-[#7A7A7A] mb-6">
-                  Tu opinión nos ayuda a mejorar y permite que otros clientes conozcan nuestra calidad de servicio.
-                  Además, nos ayuda a ser más visibles en Google.
-                </p>
-
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div className="rounded-full bg-[#D32F2F]/10 p-2 mt-1">
-                      <Star className="h-5 w-5 text-[#D32F2F]" />
-                    </div>
-                    <div>
-                      <h4 className="font-medium">Comparte tu experiencia</h4>
-                      <p className="text-sm text-[#7A7A7A]">Cuéntanos cómo fue tu visita a nuestra tienda</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <div className="rounded-full bg-[#D32F2F]/10 p-2 mt-1">
-                      <ThumbsUp className="h-5 w-5 text-[#D32F2F]" />
-                    </div>
-                    <div>
-                      <h4 className="font-medium">Ayuda a otros clientes</h4>
-                      <p className="text-sm text-[#7A7A7A]">
-                        Tu opinión puede ayudar a otros a encontrar lo que necesitan
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <Button
-                  className="w-full mt-6 bg-[#4285F4] hover:bg-[#4285F4]/80"
-                  onClick={() => window.open("https://g.page/r/foxmotorepuestosbb/review", "_blank")}
-                >
-                  Dejar una reseña en Google
-                  <ExternalLink className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
             </div>
           </div>
         </section>
