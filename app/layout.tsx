@@ -2,50 +2,54 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import { getCanonicalUrl } from "@/lib/url-utils"
-import { generateLocalBusinessSchema } from "@/lib/schema"
+import { WhatsAppButton } from "@/components/whatsapp-button"
+import { ScrollToTop } from "@/components/scroll-to-top"
+import { CookieConsent } from "@/components/cookie-consent"
+import { AnalyticsProvider } from "@/components/analytics-provider"
+import { Suspense } from "react"
 
 const inter = Inter({ subsets: ["latin"] })
 
-// Asegurarse de que la URL base tenga el protocolo correcto
-const baseUrl = getCanonicalUrl()
-
-// Generar el schema para SEO local
-const localBusinessSchema = generateLocalBusinessSchema()
-
 export const metadata: Metadata = {
-  title: "Fox Motorepuestos - Repuestos para Motos en Bahía Blanca",
+  title: "Fox Motorepuestos - Repuestos de Motos en Bahía Blanca | Ventas Mayoristas y Minoristas",
   description:
-    "Tienda especializada en repuestos y accesorios para motos en Bahía Blanca. Vendemos marcas como Far, The Orange, Osaca, DID, Choho, Metzeler, Motul, Wander y más.",
-  metadataBase: new URL(baseUrl),
+    "Especialistas en repuestos de motos en Bahía Blanca. Ventas mayoristas y minoristas. Trabajamos con las mejores marcas: FAR, DID, Metzeler, Motul y más. Servicio técnico especializado.",
+  keywords:
+    "repuestos motos, Bahía Blanca, Fox Motorepuestos, cadenas, neumáticos, aceites, accesorios, ventas mayoristas, distribuidores, talleres, FAR, DID, Metzeler, Motul",
+  authors: [{ name: "Fox Motorepuestos" }],
+  creator: "Fox Motorepuestos",
+  publisher: "Fox Motorepuestos",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL("https://foxmotorepuestos.com"),
   alternates: {
     canonical: "/",
   },
-  keywords:
-    "repuestos de motos, accesorios para motos, cadenas de moto, aceites para motos, Bahía Blanca, Fox Motorepuestos, repuestos originales, accesorios para motocicletas, tienda de repuestos",
   openGraph: {
-    title: "Fox Motorepuestos - Repuestos para Motos en Bahía Blanca",
-    description: "Tienda especializada en repuestos y accesorios para motos en Bahía Blanca.",
-    url: baseUrl,
+    title: "Fox Motorepuestos - Repuestos de Motos en Bahía Blanca | Ventas Mayoristas",
+    description:
+      "Especialistas en repuestos de motos. Ventas mayoristas y minoristas. Las mejores marcas en Bahía Blanca.",
+    url: "https://foxmotorepuestos.com",
     siteName: "Fox Motorepuestos",
-    locale: "es_AR",
-    type: "website",
     images: [
       {
-        url: `${baseUrl}/og-image.png`,
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Fox Motorepuestos - Tienda de repuestos para motos en Bahía Blanca",
+        alt: "Fox Motorepuestos - Repuestos de Motos",
       },
     ],
+    locale: "es_AR",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Fox Motorepuestos - Repuestos para Motos en Bahía Blanca",
-    description: "Tienda especializada en repuestos y accesorios para motos en Bahía Blanca.",
-    images: [`${baseUrl}/og-image.png`],
-    creator: "@foxmotorep",
+    title: "Fox Motorepuestos - Repuestos de Motos en Bahía Blanca",
+    description: "Especialistas en repuestos de motos. Ventas mayoristas y minoristas.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -59,47 +63,102 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "verificacion-google", // Reemplazar con el código de verificación real
-    yandex: "verificacion-yandex", // Opcional
-    bing: "verificacion-bing", // Opcional
+    google: "your-google-verification-code",
   },
-  authors: [{ name: "Fox Motorepuestos", url: baseUrl }],
-  category: "Repuestos para Motos",
-  applicationName: "Fox Motorepuestos",
-  other: {
-    "geo.region": "AR-B",
-    "geo.placename": "Bahía Blanca",
-    "geo.position": "-38.7;-62.2",
-    ICBM: "-38.7, -62.2",
-  },
-    generator: 'v0.dev'
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <html lang="es">
+    <html lang="es" className="scroll-smooth">
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(localBusinessSchema),
-          }}
-        />
+        <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="msapplication-TileColor" content="#D32F2F" />
-        <meta name="theme-color" content="#1C1C1C" />
+        <meta name="theme-color" content="#D32F2F" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              name: "Fox Motorepuestos",
+              image: "https://foxmotorepuestos.com/fox-logo.png",
+              description:
+                "Especialistas en repuestos y accesorios para motos en Bahía Blanca. Ventas mayoristas y minoristas.",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Manzana de las Luces 475",
+                addressLocality: "Bahía Blanca",
+                addressRegion: "Buenos Aires",
+                postalCode: "8000",
+                addressCountry: "AR",
+              },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: -38.6976364,
+                longitude: -62.3089406,
+              },
+              url: "https://foxmotorepuestos.com",
+              telephone: "+542915221351",
+              email: "foxmotorepuestos@gmail.com",
+              openingHoursSpecification: [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                  opens: "09:00",
+                  closes: "20:00",
+                },
+                {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: "Saturday",
+                  opens: "09:00",
+                  closes: "19:00",
+                },
+              ],
+              sameAs: ["https://instagram.com/foxmotorep", "https://facebook.com/foxmotorepuestosbb"],
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "Repuestos para Motos",
+                itemListElement: [
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Product",
+                      name: "Cadenas para Motos",
+                      category: "Repuestos",
+                    },
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Product",
+                      name: "Neumáticos para Motos",
+                      category: "Repuestos",
+                    },
+                  },
+                ],
+              },
+            }),
+          }}
+        />
       </head>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
+        <AnalyticsProvider>
+          <Suspense fallback={null}>
+            {children}
+            <WhatsAppButton />
+            <ScrollToTop />
+            <CookieConsent />
+          </Suspense>
+        </AnalyticsProvider>
       </body>
     </html>
   )

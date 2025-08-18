@@ -1,30 +1,53 @@
-# SaaS landing page
+# Fox Motorepuestos - Bahía Blanca
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+Sitio web oficial de Fox Motorepuestos, tienda especializada en repuestos y accesorios para motos en Bahía Blanca, Buenos Aires, Argentina.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/lautaaxs-projects/v0-saa-s-landing-page)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/giwGX2zZikR)
+## Información de Contacto
 
-## Overview
+- **Dirección**: Manzana de las Luces 475, Bahía Blanca
+- **Teléfono**: 291 522-1351
+- **Email**: info@foxmotorepuestos.com
+- **Horarios**: 
+  - Lunes a Viernes: 9:00 - 21:00
+  - Sábados: 9:00 - 19:00
+  - Domingos: 10:00 - 18:00
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+## Características del Sitio
 
-## Deployment
+- Diseño responsive optimizado para móviles
+- Integración con WhatsApp para consultas
+- Sistema de seguimiento de visitantes
+- Optimización SEO local
+- Integración con redes sociales
+- Carrusel de imágenes de productos
+- Información de marcas y productos
 
-Your project is live at:
+## Tecnologías Utilizadas
 
-**[https://vercel.com/lautaaxs-projects/v0-saa-s-landing-page](https://vercel.com/lautaaxs-projects/v0-saa-s-landing-page)**
+- Next.js 14 con App Router
+- TypeScript
+- Tailwind CSS
+- Lucide React Icons
+- Componentes shadcn/ui
 
-## Build your app
+## Marcas Disponibles
 
-Continue building your app on:
+- Far
+- The Orange
+- Osaca
+- DID
+- Choho
+- Metzeler
+- Motul
+- Wander
 
-**[https://v0.dev/chat/projects/giwGX2zZikR](https://v0.dev/chat/projects/giwGX2zZikR)**
+## Productos
 
-## How It Works
+- Cadenas y transmisión
+- Neumáticos
+- Aceites y lubricantes
+- Accesorios para motos
 
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+---
+
+*Sitio desarrollado con v0.dev*

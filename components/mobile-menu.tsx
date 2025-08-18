@@ -1,175 +1,153 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { Menu, X, Phone, Mail, MapPin, Clock, Instagram, Facebook } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Menu, Phone, Package, Instagram, Facebook } from "lucide-react"
+import Image from "next/image"
 
 export function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false)
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen)
-    // Prevenir scroll cuando el menú está abierto
-    if (!isOpen) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = "auto"
-    }
+  const handleWhatsAppWholesale = () => {
+    const phoneNumber = "542915221351"
+    const message = encodeURIComponent("Hola Fox MotoRespuestos quiero comprar como mayorista")
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
+    window.open(whatsappUrl, "_blank")
+    setIsOpen(false)
   }
 
-  // Cerrar el menú cuando se hace clic en un enlace
-  const handleLinkClick = () => {
+  const handleWhatsAppContact = () => {
+    const phoneNumber = "542915221351"
+    const message = encodeURIComponent("¡Hola! Me interesa consultar sobre repuestos para motos. ¿Podrían ayudarme?")
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
+    window.open(whatsappUrl, "_blank")
     setIsOpen(false)
-    document.body.style.overflow = "auto"
+  }
+
+  const handleNavClick = (href: string) => {
+    setIsOpen(false)
+    // Small delay to allow sheet to close before scrolling
+    setTimeout(() => {
+      const element = document.querySelector(href)
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" })
+      }
+    }, 100)
   }
 
   return (
     <div className="md:hidden">
-      <Button
-        variant="ghost"
-        size="icon"
-        className="text-white hover:bg-[#D32F2F]/10 z-50 relative"
-        onClick={toggleMenu}
-      >
-        {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        <span className="sr-only">{isOpen ? "Cerrar menú" : "Abrir menú"}</span>
-      </Button>
-
-      {/* Overlay */}
-      <div
-        className={cn(
-          "fixed inset-0 bg-black/60 backdrop-blur-sm z-40 transition-opacity duration-300",
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none",
-        )}
-        onClick={toggleMenu}
-      />
-
-      {/* Menú lateral */}
-      <div
-        className={cn(
-          "fixed top-0 right-0 h-full w-[300px] bg-[#1C1C1C] border-l border-[#7A7A7A]/20 p-6 z-50 shadow-xl transition-transform duration-300 ease-in-out",
-          isOpen ? "translate-x-0" : "translate-x-full",
-        )}
-      >
-        <div className="flex flex-col h-full">
-          {/* Header del menú */}
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center gap-2">
-              <Image src="/fox-logo.png" alt="Fox Motorepuestos Logo" width={40} height={40} className="h-8 w-auto" />
-              <span className="text-lg font-bold">
+      <Sheet open={isOpen} onOpenChange={setIsOpen}>
+        <SheetTrigger asChild>
+          <Button variant="ghost" size="icon" className="text-white hover:text-[#D32F2F]">
+            <Menu className="h-6 w-6" />
+            <span className="sr-only">Abrir menú</span>
+          </Button>
+        </SheetTrigger>
+        <SheetContent side="right" className="w-[300px] bg-[#1C1C1C] border-[#7A7A7A]/20">
+          <div className="flex flex-col h-full">
+            {/* Logo */}
+            <div className="flex items-center gap-2 mb-8">
+              <Image src="/fox-logo.png" alt="Fox Motorepuestos Logo" width={32} height={32} className="h-6 w-auto" />
+              <span className="text-lg font-bold text-white">
                 Fox <span className="text-[#D32F2F]">Motorepuestos</span>
               </span>
             </div>
-          </div>
 
-          {/* Enlaces de navegación */}
-          <nav className="flex flex-col gap-2">
-            {[
-              { href: "#inicio", label: "Inicio", delay: "100" },
-              { href: "#marcas", label: "Marcas", delay: "150" },
-              { href: "#productos", label: "Productos", delay: "200" },
-              { href: "#nosotros", label: "Nosotros", delay: "250" },
-              { href: "#contacto", label: "Contacto", delay: "300" },
-            ].map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "flex items-center gap-2 py-3 px-4 rounded-md hover:bg-[#D32F2F]/10 transition-all duration-300",
-                  isOpen ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0",
-                )}
-                style={{
-                  transitionDelay: isOpen ? `${item.delay}ms` : "0ms",
-                }}
-                onClick={handleLinkClick}
+            {/* Navigation Links */}
+            <nav className="flex flex-col space-y-4 mb-8">
+              <button
+                onClick={() => handleNavClick("#inicio")}
+                className="text-left text-white hover:text-[#D32F2F] transition-colors py-2"
               >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+                Inicio
+              </button>
+              <button
+                onClick={() => handleNavClick("#marcas")}
+                className="text-left text-white hover:text-[#D32F2F] transition-colors py-2"
+              >
+                Marcas
+              </button>
+              <button
+                onClick={() => handleNavClick("#productos")}
+                className="text-left text-white hover:text-[#D32F2F] transition-colors py-2"
+              >
+                Productos
+              </button>
+              <button
+                onClick={() => handleNavClick("#servicios")}
+                className="text-left text-white hover:text-[#D32F2F] transition-colors py-2"
+              >
+                Servicios
+              </button>
+              <button
+                onClick={() => handleNavClick("#nosotros")}
+                className="text-left text-white hover:text-[#D32F2F] transition-colors py-2"
+              >
+                Nosotros
+              </button>
+              <button
+                onClick={() => handleNavClick("#contacto")}
+                className="text-left text-white hover:text-[#D32F2F] transition-colors py-2"
+              >
+                Contacto
+              </button>
+            </nav>
 
-          {/* Información de contacto */}
-          <div
-            className={cn(
-              "mt-8 border-t border-[#7A7A7A]/20 pt-6 transition-all duration-300",
-              isOpen ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0",
-            )}
-            style={{ transitionDelay: isOpen ? "350ms" : "0ms" }}
-          >
-            <div className="flex flex-col gap-4">
-              <a href="tel:+542915347003" className="flex items-center gap-2 text-sm group">
-                <div className="rounded-full bg-[#D32F2F]/10 p-2 group-hover:bg-[#D32F2F]/20 transition-colors">
-                  <Phone className="h-4 w-4 text-[#D32F2F]" />
-                </div>
-                <span className="group-hover:text-[#D32F2F] transition-colors">291 534-7003</span>
-              </a>
-              <a href="mailto:info@foxmotorepuestos.com" className="flex items-center gap-2 text-sm group">
-                <div className="rounded-full bg-[#D32F2F]/10 p-2 group-hover:bg-[#D32F2F]/20 transition-colors">
-                  <Mail className="h-4 w-4 text-[#D32F2F]" />
-                </div>
-                <span className="group-hover:text-[#D32F2F] transition-colors">info@foxmotorepuestos.com</span>
-              </a>
-              <div className="flex items-center gap-2 text-sm">
-                <div className="rounded-full bg-[#D32F2F]/10 p-2">
-                  <MapPin className="h-4 w-4 text-[#D32F2F]" />
-                </div>
-                <span>Manzana de las Luces 475, Bahía Blanca</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                <div className="rounded-full bg-[#D32F2F]/10 p-2">
-                  <Clock className="h-4 w-4 text-[#D32F2F]" />
-                </div>
-                <span>Lun-Vie: 9:00-21:00 | Sáb: 9:00-19:00 | Dom: 10:00-18:00</span>
+            {/* Contact Buttons */}
+            <div className="space-y-3 mb-8">
+              <Button onClick={handleWhatsAppContact} className="w-full bg-[#D32F2F] hover:bg-[#D32F2F]/80 text-white">
+                <Phone className="mr-2 h-4 w-4" />
+                Contactar Ahora
+              </Button>
+              <Button
+                onClick={handleWhatsAppWholesale}
+                variant="outline"
+                className="w-full border-[#7A7A7A] text-white hover:bg-[#7A7A7A]/10 hover:border-[#D32F2F] hover:text-[#D32F2F] bg-transparent"
+              >
+                <Package className="mr-2 h-4 w-4" />
+                Ventas Mayoristas
+              </Button>
+            </div>
+
+            {/* Contact Info */}
+            <div className="space-y-4 mb-8">
+              <div className="text-center">
+                <a
+                  href="tel:+542915221351"
+                  className="flex items-center justify-center gap-2 text-[#7A7A7A] hover:text-[#D32F2F] transition-colors"
+                >
+                  <Phone className="h-4 w-4" />
+                  291 522-1351
+                </a>
               </div>
             </div>
-          </div>
 
-          {/* Redes sociales */}
-          <div
-            className={cn(
-              "mt-6 flex gap-4 transition-all duration-300",
-              isOpen ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0",
-            )}
-            style={{ transitionDelay: isOpen ? "400ms" : "0ms" }}
-          >
-            <a
-              href="https://instagram.com/foxmotorep"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-[#7A7A7A]/20 p-3 hover:bg-[#D32F2F]/20 transition-colors hover:scale-110 transform duration-200"
-            >
-              <Instagram className="h-5 w-5 text-[#D32F2F]" />
-            </a>
-            <a
-              href="https://facebook.com/foxmotorepuestosbb"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-[#7A7A7A]/20 p-3 hover:bg-[#D32F2F]/20 transition-colors hover:scale-110 transform duration-200"
-            >
-              <Facebook className="h-5 w-5 text-[#D32F2F]" />
-            </a>
+            {/* Social Media */}
+            <div className="flex justify-center gap-4 mt-auto">
+              <a
+                href="https://instagram.com/foxmotorep"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-[#7A7A7A]/20 hover:bg-[#E4405F]/20 transition-colors"
+                aria-label="Síguenos en Instagram"
+              >
+                <Instagram className="h-5 w-5 text-[#E4405F]" />
+              </a>
+              <a
+                href="https://facebook.com/foxmotorepuestosbb"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-[#7A7A7A]/20 hover:bg-[#1877F2]/20 transition-colors"
+                aria-label="Síguenos en Facebook"
+              >
+                <Facebook className="h-5 w-5 text-[#1877F2]" />
+              </a>
+            </div>
           </div>
-
-          {/* Botón de contacto */}
-          <div
-            className={cn(
-              "mt-auto transition-all duration-300",
-              isOpen ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0",
-            )}
-            style={{ transitionDelay: isOpen ? "450ms" : "0ms" }}
-          >
-            <Button
-              className="w-full bg-[#D32F2F] hover:bg-[#D32F2F]/80 transition-all duration-300 hover:shadow-lg"
-              onClick={handleLinkClick}
-            >
-              Contactar
-            </Button>
-          </div>
-        </div>
-      </div>
+        </SheetContent>
+      </Sheet>
     </div>
   )
 }
