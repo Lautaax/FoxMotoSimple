@@ -1,9 +1,10 @@
 "use client"
 
+import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Instagram, Facebook, Heart, MessageCircle, Share2 } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Instagram, Facebook, Users, Heart, MessageCircle } from "lucide-react"
 import Image from "next/image"
-import { AnimatedSection } from "./animated-section"
 
 const instagramPosts = [
   {
@@ -20,121 +21,130 @@ const instagramPosts = [
     comments: 5,
     caption: "Cadenas DID de alta calidad para tu moto 🔗 #DID #Cadenas",
   },
-  {
-    id: 3,
-    image: "/social/facebook-cover.png",
-    likes: 67,
-    comments: 12,
-    caption: "¡Visitanos en nuestro local! Manzana de las Luces 475 📍",
-  },
 ]
 
 export function SocialStats() {
+  const [currentPost, setCurrentPost] = useState(0)
+
+  const handleInstagramClick = () => {
+    window.open("https://instagram.com/foxmotorep", "_blank")
+  }
+
+  const handleFacebookClick = () => {
+    window.open("https://facebook.com/foxmotorepuestosbb", "_blank")
+  }
+
   return (
-    <AnimatedSection delay={0.1}>
-      <Card className="bg-[#1C1C1C] border-[#7A7A7A]/20 hover:border-[#D32F2F]/50 transition-all duration-300">
-        <CardHeader>
-          <CardTitle className="text-xl">Redes Sociales</CardTitle>
-          <div className="flex gap-4">
-            <div className="flex items-center gap-2">
+    <Card className="bg-[#1C1C1C] border-[#7A7A7A]/20 hover:border-[#D32F2F]/50 transition-all duration-300">
+      <CardHeader className="pb-4">
+        <CardTitle className="text-white text-lg flex items-center gap-2">
+          <Users className="h-5 w-5 text-[#D32F2F]" />
+          Redes Sociales
+        </CardTitle>
+      </CardHeader>
+
+      <CardContent className="space-y-6">
+        {/* Social Media Stats */}
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-gradient-to-br from-[#E4405F]/10 to-[#E4405F]/5 rounded-lg p-4 border border-[#E4405F]/20">
+            <div className="flex items-center gap-3 mb-2">
               <Instagram className="h-5 w-5 text-[#E4405F]" />
-              <div>
-                <div className="font-semibold">1.2K</div>
-                <div className="text-xs text-[#7A7A7A]">Seguidores</div>
-              </div>
+              <span className="text-white font-medium">Instagram</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="text-2xl font-bold text-white">2.1K</div>
+            <div className="text-sm text-[#7A7A7A]">Seguidores</div>
+          </div>
+
+          <div className="bg-gradient-to-br from-[#1877F2]/10 to-[#1877F2]/5 rounded-lg p-4 border border-[#1877F2]/20">
+            <div className="flex items-center gap-3 mb-2">
               <Facebook className="h-5 w-5 text-[#1877F2]" />
-              <div>
-                <div className="font-semibold">850</div>
-                <div className="text-xs text-[#7A7A7A]">Me gusta</div>
-              </div>
+              <span className="text-white font-medium">Facebook</span>
             </div>
+            <div className="text-2xl font-bold text-white">1.8K</div>
+            <div className="text-sm text-[#7A7A7A]">Me gusta</div>
           </div>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          {/* Engagement Stats */}
-          <div className="grid grid-cols-3 gap-4">
-            <div className="text-center">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#E4405F]/10 mb-2 mx-auto">
-                <Heart className="h-5 w-5 text-[#E4405F]" />
-              </div>
-              <div className="font-semibold">2.1K</div>
-              <div className="text-xs text-[#7A7A7A]">Likes totales</div>
-            </div>
-            <div className="text-center">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#1877F2]/10 mb-2 mx-auto">
-                <MessageCircle className="h-5 w-5 text-[#1877F2]" />
-              </div>
-              <div className="font-semibold">340</div>
-              <div className="text-xs text-[#7A7A7A]">Comentarios</div>
-            </div>
-            <div className="text-center">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#D32F2F]/10 mb-2 mx-auto">
-                <Share2 className="h-5 w-5 text-[#D32F2F]" />
-              </div>
-              <div className="font-semibold">180</div>
-              <div className="text-xs text-[#7A7A7A]">Compartidos</div>
-            </div>
-          </div>
+        </div>
 
-          {/* Recent Posts */}
-          <div>
-            <h4 className="font-semibold mb-4">Posts recientes</h4>
-            <div className="space-y-4">
-              {instagramPosts.map((post) => (
-                <div
-                  key={post.id}
-                  className="flex gap-3 p-3 rounded-lg bg-[#2A2A2A]/50 hover:bg-[#2A2A2A] transition-colors"
-                >
-                  <Image
-                    src={post.image || "/placeholder.svg"}
-                    alt="Instagram post"
-                    width={60}
-                    height={60}
-                    className="rounded-lg object-cover h-15 w-15"
-                  />
-                  <div className="flex-1">
-                    <p className="text-sm text-[#7A7A7A] mb-2 line-clamp-2">{post.caption}</p>
-                    <div className="flex items-center gap-4 text-xs text-[#7A7A7A]">
-                      <div className="flex items-center gap-1">
-                        <Heart className="h-3 w-3" />
-                        {post.likes}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <MessageCircle className="h-3 w-3" />
-                        {post.comments}
-                      </div>
-                    </div>
-                  </div>
+        {/* Recent Instagram Post */}
+        <div className="space-y-3">
+          <h4 className="text-white font-medium">Últimas publicaciones</h4>
+          <div className="bg-[#2A2A2A] rounded-lg overflow-hidden">
+            <div className="relative aspect-square">
+              <Image
+                src={instagramPosts[currentPost].image || "/placeholder.svg"}
+                alt="Instagram post"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute top-3 right-3">
+                <Instagram className="h-5 w-5 text-white drop-shadow-lg" />
+              </div>
+            </div>
+            <div className="p-4">
+              <p className="text-[#7A7A7A] text-sm mb-3">{instagramPosts[currentPost].caption}</p>
+              <div className="flex items-center gap-4 text-[#7A7A7A] text-sm">
+                <div className="flex items-center gap-1">
+                  <Heart className="h-4 w-4" />
+                  <span>{instagramPosts[currentPost].likes}</span>
                 </div>
-              ))}
+                <div className="flex items-center gap-1">
+                  <MessageCircle className="h-4 w-4" />
+                  <span>{instagramPosts[currentPost].comments}</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Follow Us */}
-          <div className="flex gap-3">
-            <a
-              href="https://instagram.com/foxmotorep"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 py-2 px-4 rounded-lg bg-gradient-to-r from-[#E4405F] to-[#C13584] text-white hover:opacity-90 transition-opacity text-sm font-medium"
-            >
-              <Instagram className="h-4 w-4" />
-              Seguir
-            </a>
-            <a
-              href="https://facebook.com/foxmotorepuestosbb"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 py-2 px-4 rounded-lg bg-[#1877F2] text-white hover:opacity-90 transition-opacity text-sm font-medium"
-            >
-              <Facebook className="h-4 w-4" />
-              Me gusta
-            </a>
+          {/* Post Navigation */}
+          <div className="flex justify-center gap-2">
+            {instagramPosts.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentPost(index)}
+                className={`h-2 w-2 rounded-full transition-colors ${
+                  index === currentPost ? "bg-[#E4405F]" : "bg-[#7A7A7A]"
+                }`}
+              />
+            ))}
           </div>
-        </CardContent>
-      </Card>
-    </AnimatedSection>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex gap-2">
+          <Button
+            onClick={handleInstagramClick}
+            className="flex-1 bg-gradient-to-r from-[#E4405F] to-[#E4405F]/80 hover:from-[#E4405F]/90 hover:to-[#E4405F]/70 text-white border-0"
+            size="sm"
+          >
+            <Instagram className="mr-2 h-4 w-4" />
+            Seguir
+          </Button>
+          <Button
+            onClick={handleFacebookClick}
+            className="flex-1 bg-[#1877F2] hover:bg-[#1877F2]/90 text-white border-0"
+            size="sm"
+          >
+            <Facebook className="mr-2 h-4 w-4" />
+            Me gusta
+          </Button>
+        </div>
+
+        {/* Engagement Stats */}
+        <div className="grid grid-cols-3 gap-4 pt-4 border-t border-[#7A7A7A]/20">
+          <div className="text-center">
+            <div className="text-lg font-bold text-[#D32F2F]">156</div>
+            <div className="text-xs text-[#7A7A7A]">Posts</div>
+          </div>
+          <div className="text-center">
+            <div className="text-lg font-bold text-[#D32F2F]">4.2K</div>
+            <div className="text-xs text-[#7A7A7A]">Likes</div>
+          </div>
+          <div className="text-center">
+            <div className="text-lg font-bold text-[#D32F2F]">89%</div>
+            <div className="text-xs text-[#7A7A7A]">Engagement</div>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
   )
 }

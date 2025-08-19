@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { X, Cookie, Settings } from "lucide-react"
+import { Cookie, X, Settings } from "lucide-react"
 
 export function CookieConsent() {
-  const [isVisible, setIsVisible] = useState(false)
+  const [showConsent, setShowConsent] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
   const [preferences, setPreferences] = useState({
     necessary: true,
@@ -17,155 +17,146 @@ export function CookieConsent() {
   useEffect(() => {
     const consent = localStorage.getItem("cookie-consent")
     if (!consent) {
-      setIsVisible(true)
+      setShowConsent(true)
     }
   }, [])
 
   const acceptAll = () => {
-    localStorage.setItem(
-      "cookie-consent",
-      JSON.stringify({
-        necessary: true,
-        analytics: true,
-        marketing: true,
-        timestamp: Date.now(),
-      }),
-    )
-    setIsVisible(false)
+    const consentData = {
+      necessary: true,
+      analytics: true,
+      marketing: true,
+      timestamp: new Date().toISOString(),
+    }
+    localStorage.setItem("cookie-consent", JSON.stringify(consentData))
+    setShowConsent(false)
   }
 
   const acceptSelected = () => {
-    localStorage.setItem(
-      "cookie-consent",
-      JSON.stringify({
-        ...preferences,
-        timestamp: Date.now(),
-      }),
-    )
-    setIsVisible(false)
+    const consentData = {
+      ...preferences,
+      timestamp: new Date().toISOString(),
+    }
+    localStorage.setItem("cookie-consent", JSON.stringify(consentData))
+    setShowConsent(false)
+    setShowSettings(false)
   }
 
   const rejectAll = () => {
-    localStorage.setItem(
-      "cookie-consent",
-      JSON.stringify({
-        necessary: true,
-        analytics: false,
-        marketing: false,
-        timestamp: Date.now(),
-      }),
-    )
-    setIsVisible(false)
+    const consentData = {
+      necessary: true,
+      analytics: false,
+      marketing: false,
+      timestamp: new Date().toISOString(),
+    }
+    localStorage.setItem("cookie-consent", JSON.stringify(consentData))
+    setShowConsent(false)
   }
 
-  if (!isVisible) return null
+  if (!showConsent) return null
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 p-4">
-      <Card className="bg-[#1C1C1C] border-[#7A7A7A]/20 shadow-2xl max-w-4xl mx-auto">
+      <Card className="bg-[#1C1C1C] border-[#7A7A7A]/20 shadow-2xl">
         <CardContent className="p-6">
-          <div className="flex items-start gap-4">
-            <div className="rounded-full bg-[#D32F2F]/10 p-2 flex-shrink-0">
-              <Cookie className="h-5 w-5 text-[#D32F2F]" />
-            </div>
-
-            <div className="flex-1">
-              <h3 className="font-semibold mb-2 text-white">Uso de Cookies</h3>
-              <p className="text-[#7A7A7A] text-sm mb-4 leading-relaxed">
-                Utilizamos cookies para mejorar tu experiencia de navegación, analizar el tráfico del sitio y
-                personalizar el contenido. Puedes aceptar todas las cookies o personalizar tus preferencias.
-              </p>
-
-              {showSettings && (
-                <div className="mb-4 space-y-3 p-4 bg-[#2A2A2A]/50 rounded-lg">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="font-medium text-sm text-white">Cookies necesarias</div>
-                      <div className="text-xs text-[#7A7A7A]">Requeridas para el funcionamiento básico</div>
-                    </div>
-                    <div className="text-[#D32F2F] text-sm font-medium">Siempre activas</div>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="font-medium text-sm text-white">Cookies de análisis</div>
-                      <div className="text-xs text-[#7A7A7A]">Nos ayudan a entender cómo usas el sitio</div>
-                    </div>
-                    <label className="relative inline-flex items-center cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={preferences.analytics}
-                        onChange={(e) => setPreferences((prev) => ({ ...prev, analytics: e.target.checked }))}
-                        className="sr-only peer"
-                      />
-                      <div className="w-11 h-6 bg-[#7A7A7A] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#D32F2F]"></div>
-                    </label>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="font-medium text-sm text-white">Cookies de marketing</div>
-                      <div className="text-xs text-[#7A7A7A]">Para mostrarte contenido relevante</div>
-                    </div>
-                    <label className="relative inline-flex items-center cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={preferences.marketing}
-                        onChange={(e) => setPreferences((prev) => ({ ...prev, marketing: e.target.checked }))}
-                        className="sr-only peer"
-                      />
-                      <div className="w-11 h-6 bg-[#7A7A7A] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#D32F2F]"></div>
-                    </label>
-                  </div>
+          {!showSettings ? (
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+              <div className="flex items-start gap-3 flex-1">
+                <Cookie className="h-6 w-6 text-[#D32F2F] mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="font-semibold text-white mb-2">Uso de Cookies</h3>
+                  <p className="text-[#7A7A7A] text-sm leading-relaxed">
+                    Utilizamos cookies para mejorar tu experiencia de navegación, analizar el tráfico del sitio y
+                    personalizar el contenido. Al hacer clic en "Aceptar todo", consientes el uso de todas las cookies.
+                  </p>
                 </div>
-              )}
-
-              <div className="flex flex-wrap gap-3">
-                <Button onClick={acceptAll} className="bg-[#D32F2F] hover:bg-[#D32F2F]/80 text-white" size="sm">
-                  Aceptar todas
+              </div>
+              <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
+                <Button
+                  onClick={() => setShowSettings(true)}
+                  variant="outline"
+                  size="sm"
+                  className="border-[#7A7A7A] text-white hover:bg-[#7A7A7A]/10 bg-transparent"
+                >
+                  <Settings className="mr-2 h-4 w-4" />
+                  Configurar
                 </Button>
-
-                {showSettings ? (
-                  <Button
-                    onClick={acceptSelected}
-                    variant="outline"
-                    className="border-[#7A7A7A] text-white hover:bg-[#7A7A7A]/10 bg-transparent"
-                    size="sm"
-                  >
-                    Guardar preferencias
-                  </Button>
-                ) : (
-                  <Button
-                    onClick={() => setShowSettings(true)}
-                    variant="outline"
-                    className="border-[#7A7A7A] text-white hover:bg-[#7A7A7A]/10"
-                    size="sm"
-                  >
-                    <Settings className="h-4 w-4 mr-2" />
-                    Personalizar
-                  </Button>
-                )}
-
                 <Button
                   onClick={rejectAll}
-                  variant="ghost"
-                  className="text-[#7A7A7A] hover:text-white hover:bg-[#7A7A7A]/10"
+                  variant="outline"
                   size="sm"
+                  className="border-[#7A7A7A] text-white hover:bg-[#7A7A7A]/10 bg-transparent"
                 >
-                  Rechazar todas
+                  Rechazar
+                </Button>
+                <Button onClick={acceptAll} size="sm" className="bg-[#D32F2F] hover:bg-[#D32F2F]/80 text-white">
+                  Aceptar todo
                 </Button>
               </div>
             </div>
+          ) : (
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-semibold text-white">Configuración de Cookies</h3>
+                <Button
+                  onClick={() => setShowSettings(false)}
+                  variant="ghost"
+                  size="icon"
+                  className="text-[#7A7A7A] hover:text-white"
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
 
-            <Button
-              onClick={() => setIsVisible(false)}
-              variant="ghost"
-              size="icon"
-              className="text-[#7A7A7A] hover:text-white flex-shrink-0"
-            >
-              <X className="h-4 w-4" />
-            </Button>
-          </div>
+              <div className="space-y-4 mb-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="font-medium text-white">Cookies Necesarias</div>
+                    <div className="text-sm text-[#7A7A7A]">Esenciales para el funcionamiento del sitio</div>
+                  </div>
+                  <div className="text-sm text-[#7A7A7A]">Siempre activas</div>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="font-medium text-white">Cookies de Análisis</div>
+                    <div className="text-sm text-[#7A7A7A]">Nos ayudan a entender cómo usas el sitio</div>
+                  </div>
+                  <label className="relative inline-flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={preferences.analytics}
+                      onChange={(e) => setPreferences({ ...preferences, analytics: e.target.checked })}
+                      className="sr-only peer"
+                    />
+                    <div className="w-11 h-6 bg-[#7A7A7A] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#D32F2F]"></div>
+                  </label>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="font-medium text-white">Cookies de Marketing</div>
+                    <div className="text-sm text-[#7A7A7A]">Para mostrarte contenido relevante</div>
+                  </div>
+                  <label className="relative inline-flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={preferences.marketing}
+                      onChange={(e) => setPreferences({ ...preferences, marketing: e.target.checked })}
+                      className="sr-only peer"
+                    />
+                    <div className="w-11 h-6 bg-[#7A7A7A] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#D32F2F]"></div>
+                  </label>
+                </div>
+              </div>
+
+              <div className="flex gap-2">
+                <Button onClick={acceptSelected} className="flex-1 bg-[#D32F2F] hover:bg-[#D32F2F]/80 text-white">
+                  Guardar preferencias
+                </Button>
+              </div>
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>

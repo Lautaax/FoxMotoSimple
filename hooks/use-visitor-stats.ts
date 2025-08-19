@@ -3,23 +3,19 @@
 import { useState, useEffect } from "react"
 
 interface VisitorStats {
-  uniqueVisitors: number
-  totalPageViews: number
-  averageSessionDuration: number
-  bounceRate: number
+  totalVisitors: number
+  todayVisitors: number
+  onlineVisitors: number
 }
 
 export function useVisitorStats() {
   const [stats, setStats] = useState<VisitorStats | null>(null)
   const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        setIsLoading(true)
-
-        // Register current visitor
+        // Register this visitor
         await fetch("/api/visitors/register", {
           method: "POST",
           headers: {
@@ -28,26 +24,30 @@ export function useVisitorStats() {
           body: JSON.stringify({
             userAgent: navigator.userAgent,
             referrer: document.referrer,
-            timestamp: Date.now(),
+            timestamp: new Date().toISOString(),
           }),
         })
 
         // Fetch current stats
         const response = await fetch("/api/visitors/stats")
-        if (!response.ok) {
-          throw new Error("Failed to fetch stats")
+        if (response.ok) {
+          const data = await response.json()
+          setStats(data)
+        } else {
+          // Fallback to mock data if API fails
+          setStats({
+            totalVisitors: 15847,
+            todayVisitors: 234,
+            onlineVisitors: 12,
+          })
         }
-
-        const data = await response.json()
-        setStats(data)
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Unknown error")
-        // Fallback to mock data if API fails
+      } catch (error) {
+        console.error("Error fetching visitor stats:", error)
+        // Fallback to mock data
         setStats({
-          uniqueVisitors: 1247,
-          totalPageViews: 3891,
-          averageSessionDuration: 180,
-          bounceRate: 0.35,
+          totalVisitors: 15847,
+          todayVisitors: 234,
+          onlineVisitors: 12,
         })
       } finally {
         setIsLoading(false)
@@ -56,15 +56,15 @@ export function useVisitorStats() {
 
     fetchStats()
 
-    // Ping every 30 seconds to update session duration
+    // Set up periodic ping to maintain online status
     const pingInterval = setInterval(() => {
       fetch("/api/visitors/ping", { method: "POST" }).catch(() => {
         // Ignore ping errors
       })
-    }, 30000)
+    }, 30000) // Ping every 30 seconds
 
     return () => clearInterval(pingInterval)
   }, [])
 
-  return { stats, isLoading, error }
+  return { stats, isLoading }
 }

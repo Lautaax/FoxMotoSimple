@@ -1,26 +1,26 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { Eye } from "lucide-react"
+import { useState, useEffect } from "react"
 import { useVisitorStats } from "@/hooks/use-visitor-stats"
+import { Eye } from "lucide-react"
 
 export function VisitorCounter() {
   const [displayCount, setDisplayCount] = useState(0)
   const { stats, isLoading } = useVisitorStats()
 
   useEffect(() => {
-    if (stats?.uniqueVisitors) {
+    if (stats?.totalVisitors) {
       // Animate counter
-      const targetCount = stats.uniqueVisitors
-      const duration = 2000 // 2 seconds
+      const target = stats.totalVisitors
+      const duration = 2000
       const steps = 60
-      const increment = targetCount / steps
+      const increment = target / steps
       let current = 0
 
       const timer = setInterval(() => {
         current += increment
-        if (current >= targetCount) {
-          setDisplayCount(targetCount)
+        if (current >= target) {
+          setDisplayCount(target)
           clearInterval(timer)
         } else {
           setDisplayCount(Math.floor(current))
@@ -29,26 +29,24 @@ export function VisitorCounter() {
 
       return () => clearInterval(timer)
     }
-  }, [stats?.uniqueVisitors])
+  }, [stats?.totalVisitors])
 
   if (isLoading) {
     return (
       <div className="text-center">
-        <div className="text-3xl md:text-4xl font-bold text-[#D32F2F] mb-2">
-          <div className="animate-pulse bg-[#D32F2F]/20 h-10 w-16 mx-auto rounded"></div>
-        </div>
-        <div className="text-[#7A7A7A]">Visitantes únicos</div>
+        <div className="text-3xl md:text-4xl font-bold text-[#D32F2F] mb-2 animate-pulse">---</div>
+        <div className="text-[#7A7A7A]">Visitantes</div>
       </div>
     )
   }
 
   return (
     <div className="text-center">
-      <div className="text-3xl md:text-4xl font-bold text-[#D32F2F] mb-2 flex items-center justify-center gap-2">
-        <Eye className="h-6 w-6" />
-        {displayCount.toLocaleString()}
+      <div className="flex items-center justify-center gap-2 mb-2">
+        <Eye className="h-5 w-5 text-[#D32F2F]" />
+        <div className="text-3xl md:text-4xl font-bold text-[#D32F2F]">{displayCount.toLocaleString()}</div>
       </div>
-      <div className="text-[#7A7A7A]">Visitantes únicos</div>
+      <div className="text-[#7A7A7A]">Visitantes</div>
     </div>
   )
 }

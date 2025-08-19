@@ -1,5 +1,5 @@
 import { cookies, headers } from "next/headers"
-import { NextResponse } from "next/server"
+import { type NextRequest, NextResponse } from "next/server"
 import fs from "fs"
 import path from "path"
 import { v4 as uuidv4 } from "uuid"
@@ -83,7 +83,12 @@ const getClientIp = () => {
   return "127.0.0.1"
 }
 
-export async function POST() {
+// In-memory storage for demo purposes
+// In production, use a proper database
+let visitors: any[] = []
+const dailyVisitors = new Map<string, number>()
+
+export async function POST(request: NextRequest) {
   try {
     // Obtener o crear ID de visitante
     const cookieStore = cookies()
@@ -165,6 +170,26 @@ export async function POST() {
       maxAge: 60 * 60 * 24 * 365, // 1 año
       path: "/",
     })
+
+    // Add visitor to in-memory storage
+    const body = await request.json()
+    const visitor = {
+      id: Date.now(),
+      ...body,
+      ip: request.ip || "unknown",
+      timestamp: new Date().toISOString(),
+    }
+
+    visitors.push(visitor)
+
+    // Update daily count
+    const currentCount = dailyVisitors.get(today) || 0
+    dailyVisitors.set(today, currentCount + 1)
+
+    // Keep only last 1000 visitors to prevent memory issues
+    if (visitors.length > 1000) {
+      visitors = visitors.slice(-1000)
+    }
 
     return response
   } catch (error) {

@@ -39,9 +39,12 @@ export async function POST() {
       path: "/",
     })
 
+    // Update last seen timestamp for the visitor
+    // In production, update database with visitor's last activity
+
     return response
   } catch (error) {
-    console.error("Error en ping de visitante:", error)
-    return NextResponse.json({ error: "Error interno del servidor" }, { status: 500 })
+    console.error("Error processing ping:", error)
+    return NextResponse.json({ error: "Failed to process ping" }, { status: 500 })
   }
 }

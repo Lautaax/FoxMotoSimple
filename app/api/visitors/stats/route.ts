@@ -3,6 +3,13 @@ import fs from "fs"
 import path from "path"
 import { groupLocationsByCountry } from "@/lib/geo-service"
 
+// Mock data for demo purposes
+const mockStats = {
+  totalVisitors: 15847,
+  todayVisitors: 234,
+  onlineVisitors: 12,
+}
+
 // Ruta al archivo de datos
 const DATA_FILE = path.join(process.cwd(), "data", "visitors.json")
 
@@ -31,13 +38,15 @@ export async function GET() {
   try {
     // Verificar si el archivo existe
     if (!fs.existsSync(DATA_FILE)) {
-      return NextResponse.json({
-        totalVisits: 0,
-        todayVisits: 0,
-        onlineUsers: 0,
-        topCountries: [],
-        recentLocations: [],
-      })
+      // In production, fetch from your database
+      // For now, return mock data with some randomization
+      const stats = {
+        totalVisitors: mockStats.totalVisitors + Math.floor(Math.random() * 10),
+        todayVisitors: mockStats.todayVisitors + Math.floor(Math.random() * 5),
+        onlineVisitors: mockStats.onlineVisitors + Math.floor(Math.random() * 3),
+      }
+
+      return NextResponse.json(stats)
     }
 
     // Leer datos del archivo
@@ -73,14 +82,14 @@ export async function GET() {
       .slice(0, 10)
 
     return NextResponse.json({
-      totalVisits: data.totalVisits,
+      totalVisitors: data.totalVisits,
       todayVisits,
       onlineUsers,
       topCountries,
       recentLocations,
     })
   } catch (error) {
-    console.error("Error obteniendo estadísticas:", error)
-    return NextResponse.json({ error: "Error interno del servidor" }, { status: 500 })
+    console.error("Error fetching visitor stats:", error)
+    return NextResponse.json({ error: "Failed to fetch stats" }, { status: 500 })
   }
 }

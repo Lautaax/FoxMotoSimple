@@ -9,10 +9,10 @@ interface AnimatedSectionProps {
   children: React.ReactNode
   className?: string
   delay?: number
-  animation?: "fade-up" | "fade-in" | "slide-left" | "slide-right" | "zoom-in"
+  animation?: "fadeInUp" | "fadeInLeft" | "fadeInRight" | "fadeIn"
 }
 
-export function AnimatedSection({ children, className, delay = 0, animation = "fade-up" }: AnimatedSectionProps) {
+export function AnimatedSection({ children, className, delay = 0, animation = "fadeInUp" }: AnimatedSectionProps) {
   const [isVisible, setIsVisible] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
@@ -42,31 +42,21 @@ export function AnimatedSection({ children, className, delay = 0, animation = "f
     }
   }, [delay])
 
-  const getAnimationClasses = () => {
-    const baseClasses = "transition-all duration-700 ease-out"
-
-    if (!isVisible) {
-      switch (animation) {
-        case "fade-up":
-          return `${baseClasses} opacity-0 translate-y-8`
-        case "fade-in":
-          return `${baseClasses} opacity-0`
-        case "slide-left":
-          return `${baseClasses} opacity-0 -translate-x-8`
-        case "slide-right":
-          return `${baseClasses} opacity-0 translate-x-8`
-        case "zoom-in":
-          return `${baseClasses} opacity-0 scale-95`
-        default:
-          return `${baseClasses} opacity-0 translate-y-8`
-      }
+  const getAnimationClass = () => {
+    switch (animation) {
+      case "fadeInLeft":
+        return isVisible ? "animate-fade-in-left" : "opacity-0 -translate-x-8"
+      case "fadeInRight":
+        return isVisible ? "animate-fade-in-right" : "opacity-0 translate-x-8"
+      case "fadeIn":
+        return isVisible ? "animate-fade-in" : "opacity-0"
+      default:
+        return isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-8"
     }
-
-    return `${baseClasses} opacity-100 translate-y-0 translate-x-0 scale-100`
   }
 
   return (
-    <div ref={ref} className={cn(getAnimationClasses(), className)}>
+    <div ref={ref} className={cn("transition-all duration-700 ease-out", getAnimationClass(), className)}>
       {children}
     </div>
   )
