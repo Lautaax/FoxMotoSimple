@@ -24,7 +24,7 @@ import { MobileMenu } from "@/components/mobile-menu"
 import { ImageCarousel } from "@/components/image-carousel"
 import { GoogleMyBusiness } from "@/components/google-my-business"
 import { SocialStats } from "@/components/social-stats"
-import { LocalSeoFooter } from "@/components/local-seo-footer"
+import { LocalSEOFooter } from "@/components/local-seo-footer"
 import { AnimatedSection } from "@/components/animated-section"
 import { VisitorCounter } from "@/components/visitor-counter"
 
@@ -144,6 +144,12 @@ export default function Home() {
               <a href="#contacto" className="hover:text-[#D32F2F] transition-colors">
                 Contacto
               </a>
+              <Link
+                href="/tienda"
+                className="bg-[#D32F2F] hover:bg-[#D32F2F]/80 text-white px-4 py-2 rounded-md transition-colors font-medium"
+              >
+                Tienda
+              </Link>
             </nav>
 
             {/* Contact Info & Social Icons */}
@@ -397,10 +403,13 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Nuestros <span className="text-[#D32F2F]">productos</span>
               </h2>
-              <p className="text-[#7A7A7A] text-lg max-w-2xl mx-auto">
+              <p className="text-[#7A7A7A] text-lg max-w-2xl mx-auto mb-8">
                 Amplio catálogo de repuestos y accesorios para todo tipo de motocicletas. Disponibles al por mayor y
                 menor.
               </p>
+              <Link href="/tienda/catalogo">
+                <Button className="bg-[#D32F2F] hover:bg-[#D32F2F]/80 mb-8">Ver Catálogo Completo</Button>
+              </Link>
             </div>
           </AnimatedSection>
 
@@ -467,7 +476,7 @@ export default function Home() {
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">
                   Sobre <span className="text-[#D32F2F]">nosotros</span>
                 </h2>
-                <p className="text-[#7A7A7A] text-lg mb-6 leading-relaxed">
+                <p className="text-[#7A7A7A] mb-6 max-w-md">
                   Fox Motorepuestos es una empresa especializada en la venta de repuestos y accesorios para motocicletas
                   de todas las marcas y cilindradas en Bahía Blanca y zona.
                 </p>
@@ -867,7 +876,7 @@ export default function Home() {
           </div>
         </div>
 
-        <LocalSeoFooter />
+        <LocalSEOFooter />
 
         <div className="border-t border-[#7A7A7A]/20 py-6">
           <div className="container px-4 md:px-6">

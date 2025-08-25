@@ -12,6 +12,10 @@
   "dependencies": {
     "@radix-ui/react-dialog": "latest",
     "@radix-ui/react-slot": "latest",
+    "@radix-ui/react-toast": "latest",
+    "@supabase/ssr": "latest",
+    "@supabase/supabase-js": "latest",
+    "@vercel/blob": "latest",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "fs": "latest",
@@ -20,10 +24,12 @@
     "path": "latest",
     "react": "^19",
     "react-dom": "^19",
+    "react-dropzone": "latest",
     "recharts": "latest",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
-    "uuid": "latest"
+    "uuid": "latest",
+    "xlsx": "latest"
   },
   "devDependencies": {
     "@types/node": "^22",

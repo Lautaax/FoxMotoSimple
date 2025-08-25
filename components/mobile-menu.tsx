@@ -3,8 +3,9 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, Phone, Package, Instagram, Facebook } from "lucide-react"
+import { Menu, Phone, Package, Instagram, Facebook, ShoppingCart } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false)
@@ -93,6 +94,14 @@ export function MobileMenu() {
               >
                 Contacto
               </button>
+              <Link
+                href="/tienda"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center gap-2 text-left text-white hover:text-[#D32F2F] transition-colors py-2 font-medium"
+              >
+                <ShoppingCart className="h-4 w-4" />
+                Tienda Online
+              </Link>
             </nav>
 
             {/* Contact Buttons */}

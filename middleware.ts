@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 import { isProduction } from "./lib/url-utils"
+import { updateSession } from "./lib/supabase/middleware"
 
 // Este middleware se ejecuta en cada solicitud
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const url = request.nextUrl.clone()
   const hostname = request.headers.get("host") || ""
 
@@ -23,6 +24,10 @@ export function middleware(request: NextRequest) {
       url.protocol = "https:"
       return NextResponse.redirect(url)
     }
+  }
+
+  if (request.nextUrl.pathname.startsWith("/tienda/admin")) {
+    return await updateSession(request)
   }
 
   // Permitir que la solicitud continúe

@@ -24,7 +24,7 @@ const services = [
   "Instalación de repuestos",
 ]
 
-export function LocalSeoFooter() {
+export function LocalSEOFooter() {
   return (
     <div className="bg-[#2A2A2A]/50 border-t border-[#7A7A7A]/20">
       <div className="container px-4 md:px-6 py-8">
